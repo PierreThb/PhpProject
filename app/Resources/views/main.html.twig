@@ -3,17 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <style>
-            @import './../../../web/css/style.css';
+            @import '../../../web/css/main.css';
+            @import '../../../web/css/WelcomePage.css';
         </style>
     </head>
     <body>
-    <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="./../../../src/AppBundle/Controller/SecurityController.php">Login</a></li>
-        <li><a href="">Admin Page</a></li>
-        <li style="float:right"><a href="">About</a></li>
-    </ul>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href={{ path('_loginpage') }}>Login</a></li>
+            <li><a href="">Admin Page</a></li>
+            <li><a href="">Team</a></li>
+            <li><a href="">Meeting</a></li>
+            <li style="float:right"><a href="">About</a></li>
+        </ul>
+
         {% block body %}{% endblock %}
+
         <footer>
             2016 &copy; Pierre Thubé solutions unlimited
         </footer>

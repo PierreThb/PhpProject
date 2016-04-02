@@ -23,3 +23,8 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                default_target_path: welcome
+
+    access_control:
+       # - { path: ^/login, roles: ROLE_USER }
+       # - { path: ^/welcome, roles: ROLE_USER }

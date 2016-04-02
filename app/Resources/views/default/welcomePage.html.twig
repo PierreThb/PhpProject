@@ -1,5 +1,11 @@
 {% extends './main.html.twig' %}
 
 {% block body %}
-    Hello World, welcome on TeamManagment website !
+    <div class="content">
+        <div class="block">
+            <p>Hello World, welcome on TeamManagment website !</p>
+            <img src="{{ asset('images/welcomepage.jpg') }}">
+            <a href={{ path('_loginpage') }} class="button"><span>Login</span></a>
+        </div>
+    </div>
 {% endblock %}
