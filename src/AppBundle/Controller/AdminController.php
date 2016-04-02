@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\User;
+use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,8 +35,28 @@ class AdminController extends Controller
     {
         $user = new User();
 
-        $templateName = 'newuser';
-        return $this->render($templateName.'.html.twig');
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isValid()){
+            $password = $user->getUserName(); //for now password = username
+            $user->setPassword($password);
+            $user->setIsAdmin(false);
+            $user->setTeam(null);
+
+            $em = $this->getDoctrine()->getManager();
+            $em ->persist($user);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'User well stored');
+
+            return $this->redirect($this->generateUrl('_adminpage', array('id'=>$user->getId())));
+        }
+
+        return $this->render(':adminpage:newuser.html.twig',array(
+            'form' => $form->createView(),
+        ));
     }
 
     public function newProjectAction(Request $request)

@@ -1,6 +1,20 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
 welcome:
     path: /welcome
     defaults: { _controller: AppBundle:Index:index }
+
+adminpage:
+    path: /adminpage
+    defaults: { _controller: AppBundle:Admin:adminPage}
+
+    path: /adminpage/newuser
+    defaults: { _controller: AppBundle:Admin:newUser}
+
+    path: /adminpage/newteam
+    defaults: { _controller: AppBundle:Admin:newTeam}
+
+    path: /adminpage/newproject
+    defaults: { _controller: AppBundle:Admin:newProject}

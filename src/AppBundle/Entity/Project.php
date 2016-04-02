@@ -21,7 +21,16 @@ class Project
      */
     private $id;
 
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $leader;
 
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $secretary;
+    
     /**
      * Get id
      *

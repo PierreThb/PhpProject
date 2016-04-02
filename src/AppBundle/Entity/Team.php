@@ -26,12 +26,12 @@ class Team
      *
      * @ORM\Column(name="numberMember", type="integer")
      */
-    private $numberMember;
+    private $numbermember;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Project")
      */
-    private $Project;
+    private $project;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
@@ -46,7 +46,7 @@ class Team
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Meeting")
      */
-    private $NextMeeting;
+    private $nextmeeting;
 
 
     /**
@@ -68,7 +68,7 @@ class Team
      */
     public function setNumberMember($numberMember)
     {
-        $this->numberMember = $numberMember;
+        $this->numbermember = $numberMember;
 
         return $this;
     }
@@ -80,7 +80,7 @@ class Team
      */
     public function getNumberMember()
     {
-        return $this->numberMember;
+        return $this->numbermember;
     }
 
     /**
@@ -92,7 +92,7 @@ class Team
      */
     public function setProject(\AppBundle\Entity\Project $project = null)
     {
-        $this->Project = $project;
+        $this->project = $project;
 
         return $this;
     }
@@ -104,7 +104,7 @@ class Team
      */
     public function getProject()
     {
-        return $this->Project;
+        return $this->project;
     }
 
     /**
@@ -164,7 +164,7 @@ class Team
      */
     public function setNextMeeting(\AppBundle\Entity\Meeting $nextMeeting = null)
     {
-        $this->NextMeeting = $nextMeeting;
+        $this->nextmeeting = $nextMeeting;
 
         return $this;
     }
@@ -176,6 +176,6 @@ class Team
      */
     public function getNextMeeting()
     {
-        return $this->NextMeeting;
+        return $this->nextmeeting;
     }
 }

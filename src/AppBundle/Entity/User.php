@@ -26,7 +26,7 @@ class User
      *
      * @ORM\Column(name="userName", type="string", length=255)
      */
-    private $userName;
+    private $username;
 
     /**
      * @var string
@@ -40,14 +40,14 @@ class User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
      */
-    private $Team;
+    private $team;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="isAdmin", type="boolean")
      */
-    private $isAdmin;
+    private $isadmin;
 
 
     /**
@@ -61,7 +61,7 @@ class User
     }
 
     /**
-     * Set userName
+     * Set username
      *
      * @param string $userName
      *
@@ -69,7 +69,7 @@ class User
      */
     public function setUserName($userName)
     {
-        $this->userName = $userName;
+        $this->username = $userName;
 
         return $this;
     }
@@ -81,7 +81,7 @@ class User
      */
     public function getUserName()
     {
-        return $this->userName;
+        return $this->username;
     }
 
     /**
@@ -109,30 +109,6 @@ class User
     }
 
     /**
-     * Set listTeam
-     *
-     * @param array $listTeam
-     *
-     * @return User
-     */
-    public function setListTeam($listTeam)
-    {
-        $this->listTeam = $listTeam;
-
-        return $this;
-    }
-
-    /**
-     * Get listTeam
-     *
-     * @return array
-     */
-    public function getListTeam()
-    {
-        return $this->listTeam;
-    }
-
-    /**
      * Set isAdmin
      *
      * @param boolean $isAdmin
@@ -141,31 +117,31 @@ class User
      */
     public function setIsAdmin($isAdmin)
     {
-        $this->isAdmin = $isAdmin;
+        $this->isadmin = $isAdmin;
 
         return $this;
     }
 
     /**
-     * Get isAdmin
+     * Get isadmin
      *
      * @return bool
      */
     public function getIsAdmin()
     {
-        return $this->isAdmin;
+        return $this->isadmin;
     }
 
     /**
      * Set team
      *
-     * @param \AppBundle\Entity\Team $team
+     * @param \AppBundle\Entity\team $team
      *
      * @return User
      */
     public function setTeam(\AppBundle\Entity\Team $team = null)
     {
-        $this->Team = $team;
+        $this->team = $team;
 
         return $this;
     }
@@ -173,10 +149,10 @@ class User
     /**
      * Get team
      *
-     * @return \AppBundle\Entity\Team
+     * @return \AppBundle\Entity\team
      */
     public function getTeam()
     {
-        return $this->Team;
+        return $this->team;
     }
 }
