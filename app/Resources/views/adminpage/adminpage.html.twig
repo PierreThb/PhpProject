@@ -3,9 +3,15 @@
 {% block body %}
     <p>admin page</p>
     <hr>
-    <a href={{ path('_newuser') }}>New User</a>
+    <a href={{ path('_newuser') }}>New user</a>
     |
-    <a href="">New Project</a>
+    <a href={{ path('_alluser') }}>See all users</a>
     |
-    <a href="">New Team</a>
+    <a href={{ path('_newproject') }}>New project</a>
+    |
+    <a href={{ path('_allproject') }}>See all projects</a>
+    |
+    <a href={{ path('_newteam') }}>New team</a>
+    |
+    <a href={{ path('_allteam') }}>See all teams</a>
 {% endblock %}

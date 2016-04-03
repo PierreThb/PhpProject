@@ -38,7 +38,7 @@ class User
     /**
      * @var Team
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Team")
      */
     private $team;
 
@@ -154,5 +154,15 @@ class User
     public function getTeam()
     {
         return $this->team;
+    }
+
+    public function getSerializeInfo(){
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->isadmin,
+            $this->team
+        ));
     }
 }

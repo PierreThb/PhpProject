@@ -18,3 +18,9 @@ adminpage:
 
     path: /adminpage/newproject
     defaults: { _controller: AppBundle:Admin:newProject}
+
+    path: /adminpage/alluser
+    defaults: { _controller: AppBundle:Admin:seeAllUsers}
+
+    path: /adminpage/allteam
+    defaults: { _controller: AppBundle:Admin:seeAllTeams}

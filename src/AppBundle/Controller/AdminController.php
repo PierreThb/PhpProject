@@ -59,15 +59,58 @@ class AdminController extends Controller
         ));
     }
 
-    public function newProjectAction(Request $request)
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("adminpage/alluser",name="_alluser")
+     */
+    public function seeAllUsersAction(Request $request)
     {
-        $templateName = 'newproject';
-        return $this->render($templateName.'.html.twig');
+        return $this->render(':adminpage:allusers.html.twig');
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("adminpage/newproject",name="_newproject")
+     */
+    public function newProjectAction(Request $request)
+    {
+        return $this->render(':adminpage:newproject.html.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("adminpage/allproject",name="_allproject")
+     */
+    public function seeAllProjectAction(Request $request)
+    {
+        return $this->render(':adminpage:allprojects.html.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("adminpage/newteam",name="_newteam")
+     */
     public function newTeamAction(Request $request)
     {
-        $templateName = 'newteam';
-        return $this->render($templateName.'.html.twig');
+        return $this->render(':adminpage:newteam.html.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("amdminpage/allteam",name="_allteam")
+     */
+    public function seeAllTeamsAction(Request $request)
+    {
+        return $this->render(':adminpage:allteams.html.twig');
     }
 }
