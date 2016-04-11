@@ -1,0 +1,6 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <p>User {{ _username }} has been created with password {{ _password }}</p>
+    <a href={{ path('_adminpage') }}>Ok</a>
+{% endblock %}

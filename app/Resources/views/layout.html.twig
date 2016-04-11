@@ -4,13 +4,14 @@
         <meta charset="UTF-8" />
         <style>
             @import '../../../web/css/main.css';
-            @import '../../../web/css/WelcomePage.css';
+            {% block stylesheets %}{% endblock %}
         </style>
+        <link rel="icon" type="image/x-icon" href="{{ asset('people.png') }}" />
     </head>
     <body>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href={{ path('_loginpage') }}>Login</a></li>
+            <li><a href={{ path('welcome') }}>Home</a></li>
+            <li><a href={{ path('login') }}>Login</a></li>
             <li><a href={{ path('_adminpage') }}>Admin Page</a></li>
             <li><a href="">Team</a></li>
             <li><a href="">Meeting</a></li>

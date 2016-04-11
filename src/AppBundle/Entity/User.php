@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -67,7 +68,7 @@ class User
      *
      * @return User
      */
-    public function setUserName($userName)
+    public function setUsername($userName)
     {
         $this->username = $userName;
 
@@ -79,7 +80,7 @@ class User
      *
      * @return string
      */
-    public function getUserName()
+    public function getUsername()
     {
         return $this->username;
     }
@@ -156,13 +157,31 @@ class User
         return $this->team;
     }
 
-    public function getSerializeInfo(){
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            $this->isadmin,
-            $this->team
-        ));
+    /**
+     * @return null
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     *
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        $array = array('ROLE_USER');
+        if ($this->getIsAdmin() == true){
+            $array[]='ROLE_ADMIN';
+        }
+        return $array;
     }
 }

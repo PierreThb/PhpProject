@@ -22,6 +22,7 @@ class AdminController extends Controller
      */
     public function adminPageAction(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
         return $this->render(':adminpage:adminpage.html.twig');
     }
 
@@ -40,7 +41,8 @@ class AdminController extends Controller
         $form->handleRequest($request);
 
         if($form->isValid()){
-            $password = $user->getUserName(); //for now password = username
+            $randpass = base64_encode(random_bytes(6));
+            $password = $this->get('security.password_encoder')->encodePassword($user, $randpass);
             $user->setPassword($password);
             $user->setIsAdmin(false);
             $user->setTeam(null);
@@ -51,7 +53,10 @@ class AdminController extends Controller
 
             $request->getSession()->getFlashBag()->add('notice', 'User well stored');
 
-            return $this->redirect($this->generateUrl('_adminpage', array('id'=>$user->getId())));
+            return $this->render(':adminpage:newuserconfirm.html.twig',array(
+                '_username' => $user->getUsername(),
+                '_password' => $randpass,
+            ));
         }
 
         return $this->render(':adminpage:newuser.html.twig',array(
