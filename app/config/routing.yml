@@ -2,10 +2,6 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-welcome:
-    path: /welcome
-    defaults: { _controller: AppBundle:Index:index }
-
 adminpage:
     path: /adminpage
     defaults: { _controller: AppBundle:Admin:adminPage}
@@ -24,3 +20,7 @@ adminpage:
 
     path: /adminpage/allteam
     defaults: { _controller: AppBundle:Admin:seeAllTeams}
+
+team:
+    path: /teampage
+    defaults: { _controller: AppBundle:Team:teamPage}

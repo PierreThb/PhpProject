@@ -9,7 +9,9 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
+use AppBundle\Form\ProjectType;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,12 +20,24 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends Controller
 {
     /**
-     * @Route("/adminpage",name="_adminpage")
+     * @param Request $request
+     *
+     * @Route("adminpage/user", name="_adminuser")
      */
-    public function adminPageAction(Request $request)
+    public function adminUserPartAction(Request $request)
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
-        return $this->render(':adminpage:adminpage.html.twig');
+        //$this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+        $this->render('');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @Route("adminpage/project", name="_adminproject)
+     */
+    public function adminProjectPartAction(Request $request)
+    {
+
     }
 
     /**
@@ -68,54 +82,25 @@ class AdminController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @Route("adminpage/alluser",name="_alluser")
-     */
-    public function seeAllUsersAction(Request $request)
-    {
-        return $this->render(':adminpage:allusers.html.twig');
-    }
-
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
      * @Route("adminpage/newproject",name="_newproject")
      */
     public function newProjectAction(Request $request)
     {
-        return $this->render(':adminpage:newproject.html.twig');
-    }
+        $project = new Project();
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @Route("adminpage/allproject",name="_allproject")
-     */
-    public function seeAllProjectAction(Request $request)
-    {
-        return $this->render(':adminpage:allprojects.html.twig');
-    }
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @Route("adminpage/newteam",name="_newteam")
-     */
-    public function newTeamAction(Request $request)
-    {
-        return $this->render(':adminpage:newteam.html.twig');
-    }
+        if($form->isValid()){
+            $project->setIslocked(false);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @Route("amdminpage/allteam",name="_allteam")
-     */
-    public function seeAllTeamsAction(Request $request)
-    {
-        return $this->render(':adminpage:allteams.html.twig');
+            return $this->render(':adminpage:adminpage.html.twig');
+        }
+        return $this->render(':adminpage:newproject.html.twig',array(
+            'form' => $form->createView()
+        ));
     }
 }

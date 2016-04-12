@@ -1,13 +1,3 @@
-#tableuser,.thuser,.tduser{
-    border: 1px solid black;
-    border-collapse: collapse;
-}
 
-#divalluser, #divallproject, #divallteams{
-    padding-left: 2%;
-}
 
-.thuser,.tduser{
-    padding: 15px;
-    text-align: left;
-}
+

@@ -30,8 +30,9 @@ security:
             provider: our_db_provider
 
             form_login:
-                login_path: login
-                check_path: login
+                login_path: index
+                check_path: index
+                default_target_path: team
 
     access_control:
        # - { path: ^/login, roles: ROLE_USER }

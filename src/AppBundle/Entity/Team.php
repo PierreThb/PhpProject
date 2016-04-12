@@ -21,6 +21,11 @@ class Team
      */
     private $id;
 
+    /*
+     * @ORM\Column(type="string")
+     */
+    private $name;
+
     /**
      * @var int
      *
