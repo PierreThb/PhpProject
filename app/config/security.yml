@@ -29,6 +29,10 @@ security:
             # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
             provider: our_db_provider
 
+            logout:
+                path: logout
+                target: index
+
             form_login:
                 login_path: index
                 check_path: index

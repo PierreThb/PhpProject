@@ -22,22 +22,33 @@ class AdminController extends Controller
     /**
      * @param Request $request
      *
-     * @Route("adminpage/user", name="_adminuser")
+     * @Route("/adminpage/user", name="_adminuser")
      */
     public function adminUserPartAction(Request $request)
     {
-        //$this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
-        $this->render('');
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        $listUser = $this->getDoctrine()->getManager()->getRepository(User::class)->findAll();
+
+        return $this->render(':adminpage:adminuser.html.twig',array(
+            'listuser'=>$listUser
+        ));
     }
 
     /**
      * @param Request $request
      *
-     * @Route("adminpage/project", name="_adminproject)
+     * @Route("/adminpage/project", name="_adminproject")
      */
     public function adminProjectPartAction(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
 
+        $listProject = $this->getDoctrine()->getManager()->getRepository(Project::class)->findAll();
+
+        return $this->render(':adminpage:adminproject.html.twig',array(
+            'listproject'=>$listProject
+        ));
     }
 
     /**
@@ -97,8 +108,11 @@ class AdminController extends Controller
             $em->persist($project);
             $em->flush();
 
-            return $this->render(':adminpage:adminpage.html.twig');
+            return $this->render(':adminpage:newprojectconfirm.html.twig',array(
+                '_projectname'=>$project->getName()
+            ));
         }
+
         return $this->render(':adminpage:newproject.html.twig',array(
             'form' => $form->createView()
         ));

@@ -1,0 +1,17 @@
+{% extends "layout.html.twig" %}
+
+{% block stylesheets %}
+    @import '../../../web/css/adminpage.css';
+{% endblock %}
+
+{% block body %}
+    <p>project page for admin</p>
+    <hr>
+    <a href={{ path('_newproject') }}>new project</a></li>
+    <hr>
+    <ul>
+        {% for project in listproject %}
+            <li>{{ project.name }} , <a href="">lock</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

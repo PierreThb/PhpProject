@@ -13,7 +13,7 @@ body {
     margin:0;
 }
 
-ul {
+.ulmenu {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -21,12 +21,12 @@ ul {
     background-color: #333;
 }
 
-li {
+.limenu {
     float: left;
     border-right: 1px solid #bbb;
 }
 
-li a {
+.limenu a {
     display: block;
     color: white;
     text-align: center;

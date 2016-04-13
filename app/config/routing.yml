@@ -24,3 +24,5 @@ adminpage:
 team:
     path: /teampage
     defaults: { _controller: AppBundle:Team:teamPage}
+logout:
+    path: /

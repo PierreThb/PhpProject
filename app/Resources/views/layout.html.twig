@@ -9,12 +9,13 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('people.png') }}" />
     </head>
     <body>
-        <ul>
-            <li><a class="overed" href={{ path('_team') }}>Team</a></li>
-            <li><a>Admin tabs</a></li>
-            <li><a class="overed" href={{ path('_adminuser') }}>User</a></li>
-            <li><a class="overed" href={{ path('_adminproject') }}>Project</a></li>
-            <li style="float:right"><a href="">About</a></li>
+        <ul class="ulmenu">
+            <li class="limenu"><a class="overed" href={{ path('_team') }}>Team</a></li>
+            <li class="limenu"><a>Admin tabs</a></li>
+            <li class="limenu"><a class="overed" href={{ path('_adminuser') }}>User</a></li>
+            <li class="limenu"><a class="overed" href={{ path('_adminproject') }}>Project</a></li>
+            <li class="limenu" style="float:right"><a class="overed" href={{ path('logout') }}>Logout</a></li>
+            <li class="limenu" style="float:right"><a class="overed" href="">About</a></li>
         </ul>
 
         {% block body %}{% endblock %}
