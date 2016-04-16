@@ -44,10 +44,17 @@ class AdminController extends Controller
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
 
-        $listProject = $this->getDoctrine()->getManager()->getRepository(Project::class)->findAll();
+        $rep = $this->getDoctrine()->getManager()->getRepository(Project::class);
+        $listProjectlock = $rep->findBy(array(
+            'islocked'=>true
+        ));
+        $listProjectunlock = $rep->findBy(array(
+            'islocked'=>false
+        ));
 
         return $this->render(':adminpage:adminproject.html.twig',array(
-            'listproject'=>$listProject
+            'listprojectlock'=>$listProjectlock,
+            'listprojectunlock'=>$listProjectunlock
         ));
     }
 
@@ -104,6 +111,8 @@ class AdminController extends Controller
 
         if($form->isValid()){
             $project->setIslocked(false);
+            $project->addUser($project->getLeader());
+            $project->addUser($project->getSecretary());
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
             $em->flush();
@@ -115,6 +124,44 @@ class AdminController extends Controller
 
         return $this->render(':adminpage:newproject.html.twig',array(
             'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("adminpage/lock/{id}",name="_lock")
+     */
+    public function lockProjectAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository(Project::class)->find($id);
+
+        $project->setIslocked(true);
+        $em->flush();
+
+        return $this->render(':adminpage:lockprojectconfirm.html.twig',array(
+            'name'=>$project->getName()
+        ));
+    }
+
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("adminpage/unlock/{id}",name="_unlock")
+     */
+    public function unlockProjectAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository(Project::class)->find($id);
+
+        $project->setIslocked(false);
+        $em->flush();
+
+        return $this->render(':adminpage:unlockprojectconfirm.html.twig',array(
+            'name'=>$project->getName()
         ));
     }
 }

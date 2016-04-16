@@ -2,4 +2,14 @@
 
 {% block body %}
     <p>team page</p>
+    <hr>
+    <p>Unlocked project</p>
+    {% for project in listprojectunlock %}
+        <li>name : {{ project.name  }}, leader : {{ project.leader.username }}, secretary : {{ project.secretary.username }}</li>
+    {% endfor %}
+    <hr>
+    <p>Locked project</p>
+    {% for project in listprojectlock %}
+        <li>name : {{ project.name  }}, leader : {{ project.leader.username }}, secretary : {{ project.secretary.username }}, locked : {{ project.islocked }}</li>
+    {% endfor %}
 {% endblock %}
