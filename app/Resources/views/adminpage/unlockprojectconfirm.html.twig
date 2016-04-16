@@ -1,0 +1,6 @@
+{% extends 'layout.html.twig' %}
+
+{%  block body %}
+    <p>Project {{ name }} has been unlocked</p>
+    <button><a href={{ path('_adminproject') }}>Ok</a></button>
+{%  endblock %}
