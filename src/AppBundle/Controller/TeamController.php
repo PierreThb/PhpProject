@@ -9,8 +9,10 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Meeting;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
+use AppBundle\Form\MeetingType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,20 +54,41 @@ class TeamController extends Controller
             }
         }
 
-        /*
-        $listProjetUnlock = $repository->findBy(array(
-            'leader'=>$userId,
-            'islocked'=>false
-        ));
-
-        $listProjetlock = $repository->findBy(array(
-            'leader'=>$userId,
-            'islocked'=>true
-        ));*/
-
         return $this->render(':teampage:team.html.twig',array(
             'listprojectunlock'=>$listProjetUnlock,
             'listprojectlock'=>$listProjetlock
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("teampage/newmeeting/{id}",name="_newmeeting")
+     */
+    public function newMeetingAction(Request $request, $id)
+    {
+        $meeting = new Meeting();
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository(Project::class)->find($id);
+
+        $form = $this->createForm(MeetingType::class, $meeting);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $meeting->setProject($project);
+            $em->persist($meeting);
+            $em->flush();
+
+            return $this->render(':teampage:newmeetingconfirm.html.twig',array(
+                'date'=>$meeting->getDate(),
+                'project'=>$meeting->getProject()->getName(),
+                'room'=>$meeting->getRoom()
+            ));
+        }
+        return $this->render(':teampage:newmeeting.html.twig',array(
+            'form' => $form->createView()
         ));
     }
 }

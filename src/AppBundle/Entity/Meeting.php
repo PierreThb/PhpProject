@@ -26,37 +26,16 @@ class Meeting
     /**
      * @var int
      *
-     * @ORM\Column(name="duration",type="integer")
+     * @ORM\Column(name="duration",type="time")
      */
     private $duration;
 
     /**
-     * @var MeetingAgenda
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\MeetingAgenda")
-     */
-    private $MeetingAgenda;
-
-    /**
      * @var date
      *
-     * @ORM\Column(name="date",type="date")
+     * @ORM\Column(name="date",type="datetime")
      */
     private $date;
-
-    /**
-     * @var time
-     *
-     * @ORM\Column(name="time",type="time")
-     */
-    private $time;
-
-    /**
-     * @var date
-     *
-     * @ORM\Column(name="deadline_agenda",type="date")
-     */
-    private $deadlineAgenda;
 
     /**
      * @var string
@@ -68,16 +47,23 @@ class Meeting
     /**
      * @var User
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
-    private $MeetingLeader;
+    private $meetingLeader;
 
     /**
      * @var User
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
-    private $MeetingSecretary;
+    private $meetingSecretary;
+
+    /**
+     * @var Project
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project")
+     */
+    private $project;
 
     /**
      * Get id
@@ -218,7 +204,7 @@ class Meeting
      */
     public function setMeetingAgenda(\AppBundle\Entity\MeetingAgenda $meetingAgenda = null)
     {
-        $this->MeetingAgenda = $meetingAgenda;
+        $this->meetingAgenda = $meetingAgenda;
 
         return $this;
     }
@@ -230,7 +216,7 @@ class Meeting
      */
     public function getMeetingAgenda()
     {
-        return $this->MeetingAgenda;
+        return $this->meetingAgenda;
     }
 
     /**
@@ -242,7 +228,7 @@ class Meeting
      */
     public function setMeetingLeader(\AppBundle\Entity\User $meetingLeader = null)
     {
-        $this->MeetingLeader = $meetingLeader;
+        $this->meetingLeader = $meetingLeader;
 
         return $this;
     }
@@ -254,7 +240,7 @@ class Meeting
      */
     public function getMeetingLeader()
     {
-        return $this->MeetingLeader;
+        return $this->meetingLeader;
     }
 
     /**
@@ -266,7 +252,7 @@ class Meeting
      */
     public function setMeetingSecretary(\AppBundle\Entity\User $meetingSecretary = null)
     {
-        $this->MeetingSecretary = $meetingSecretary;
+        $this->meetingSecretary = $meetingSecretary;
 
         return $this;
     }
@@ -278,6 +264,30 @@ class Meeting
      */
     public function getMeetingSecretary()
     {
-        return $this->MeetingSecretary;
+        return $this->meetingSecretary;
+    }
+
+    /**
+     * Set project
+     *
+     * @param \AppBundle\Entity\Project $project
+     *
+     * @return Meeting
+     */
+    public function setProject(\AppBundle\Entity\Project $project = null)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \AppBundle\Entity\Project
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }

@@ -25,5 +25,8 @@ team:
     path: /teampage
     defaults: { _controller: AppBundle:Team:teamPage}
 
+    path: /teampage/{id}
+    defaults: { _controller: AppBundle:Team:newMeeting}
+
 logout:
     path: /
