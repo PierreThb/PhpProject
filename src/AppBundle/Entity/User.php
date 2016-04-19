@@ -37,13 +37,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @var Team
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Team")
-     */
-    private $team;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="isAdmin", type="boolean")
@@ -131,30 +124,6 @@ class User implements UserInterface
     public function getIsAdmin()
     {
         return $this->isadmin;
-    }
-
-    /**
-     * Set team
-     *
-     * @param \AppBundle\Entity\team $team
-     *
-     * @return User
-     */
-    public function setTeam(\AppBundle\Entity\Team $team = null)
-    {
-        $this->team = $team;
-
-        return $this;
-    }
-
-    /**
-     * Get team
-     *
-     * @return \AppBundle\Entity\team
-     */
-    public function getTeam()
-    {
-        return $this->team;
     }
 
     /**

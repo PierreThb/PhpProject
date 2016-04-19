@@ -61,7 +61,8 @@ class Meeting
     /**
      * @var Project
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project",inversedBy="meetings")
+     * @ORM\JoinColumn(name="ProjectMeetings", referencedColumnName="id")
      */
     private $project;
 

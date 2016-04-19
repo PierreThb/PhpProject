@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -26,7 +27,7 @@ class User
      *
      * @ORM\Column(name="userName", type="string", length=255)
      */
-    private $userName;
+    private $username;
 
     /**
      * @var string
@@ -36,18 +37,11 @@ class User
     private $password;
 
     /**
-     * @var Team
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
-     */
-    private $Team;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="isAdmin", type="boolean")
      */
-    private $isAdmin;
+    private $isadmin;
 
 
     /**
@@ -61,15 +55,15 @@ class User
     }
 
     /**
-     * Set userName
+     * Set username
      *
      * @param string $userName
      *
      * @return User
      */
-    public function setUserName($userName)
+    public function setUsername($userName)
     {
-        $this->userName = $userName;
+        $this->username = $userName;
 
         return $this;
     }
@@ -79,9 +73,9 @@ class User
      *
      * @return string
      */
-    public function getUserName()
+    public function getUsername()
     {
-        return $this->userName;
+        return $this->username;
     }
 
     /**
@@ -109,30 +103,6 @@ class User
     }
 
     /**
-     * Set listTeam
-     *
-     * @param array $listTeam
-     *
-     * @return User
-     */
-    public function setListTeam($listTeam)
-    {
-        $this->listTeam = $listTeam;
-
-        return $this;
-    }
-
-    /**
-     * Get listTeam
-     *
-     * @return array
-     */
-    public function getListTeam()
-    {
-        return $this->listTeam;
-    }
-
-    /**
      * Set isAdmin
      *
      * @param boolean $isAdmin
@@ -141,31 +111,31 @@ class User
      */
     public function setIsAdmin($isAdmin)
     {
-        $this->isAdmin = $isAdmin;
+        $this->isadmin = $isAdmin;
 
         return $this;
     }
 
     /**
-     * Get isAdmin
+     * Get isadmin
      *
      * @return bool
      */
     public function getIsAdmin()
     {
-        return $this->isAdmin;
+        return $this->isadmin;
     }
 
     /**
      * Set team
      *
-     * @param \AppBundle\Entity\Team $team
+     * @param \AppBundle\Entity\team $team
      *
      * @return User
      */
     public function setTeam(\AppBundle\Entity\Team $team = null)
     {
-        $this->Team = $team;
+        $this->team = $team;
 
         return $this;
     }
@@ -173,10 +143,38 @@ class User
     /**
      * Get team
      *
-     * @return \AppBundle\Entity\Team
+     * @return \AppBundle\Entity\team
      */
     public function getTeam()
     {
-        return $this->Team;
+        return $this->team;
+    }
+
+    /**
+     * @return null
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     *
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        $array = array('ROLE_USER');
+        if ($this->getIsAdmin() == true){
+            $array[]='ROLE_ADMIN';
+        }
+        return $array;
     }
 }

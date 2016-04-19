@@ -67,27 +67,38 @@ class TeamController extends Controller
      */
     public function newMeetingAction(Request $request, $id)
     {
+        $user = $this->getUser();
+        $username = $user->getUsername();
         $meeting = new Meeting();
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository(Project::class)->find($id);
+        $leader = $project->getLeader()->getUsername();
 
-        $form = $this->createForm(MeetingType::class, $meeting);
-        $form->handleRequest($request);
+        if($username != $leader){
+            return $this->render(':errors:error.html.twig',array(
+               'message'=>'Only the leader can add a meeting'
+            ));
+        }else{
+            $form = $this->createForm(MeetingType::class, $meeting);
+            $form->handleRequest($request);
 
-        if($form->isValid())
-        {
-            $meeting->setProject($project);
-            $em->persist($meeting);
-            $em->flush();
+            if($form->isValid())
+            {
+                $meeting->setProject($project);
+                $project->addMeeting($meeting);
+                $em->persist($meeting);
+                $em->persist($project);
+                $em->flush();
 
-            return $this->render(':teampage:newmeetingconfirm.html.twig',array(
-                'date'=>$meeting->getDate(),
-                'project'=>$meeting->getProject()->getName(),
-                'room'=>$meeting->getRoom()
+                return $this->render(':teampage:newmeetingconfirm.html.twig',array(
+                    'date'=>$meeting->getDate(),
+                    'project'=>$meeting->getProject()->getName(),
+                    'room'=>$meeting->getRoom()
+                ));
+            }
+            return $this->render(':teampage:newmeeting.html.twig',array(
+                'form' => $form->createView()
             ));
         }
-        return $this->render(':teampage:newmeeting.html.twig',array(
-            'form' => $form->createView()
-        ));
     }
 }

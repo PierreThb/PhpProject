@@ -111,8 +111,20 @@ class AdminController extends Controller
 
         if($form->isValid()){
             $project->setIslocked(false);
-            $project->addUser($project->getLeader());
-            $project->addUser($project->getSecretary());
+            $participant = $project->getUsers();
+
+            if($participant->contains($project->getLeader())){ //check if the leader already in te list of user
+                // if yes nothing to do
+            }else{
+                $project->addUser($project->getLeader()); //if no add him into the list
+            }
+
+            if($participant->contains($project->getSecretary())){ //check if the secreatry already in the list of user
+                // if yes nothing to do
+            }else{
+                $project->addUser($project->getSecretary()); //if no add him in the list
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
             $em->flush();

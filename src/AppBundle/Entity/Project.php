@@ -47,9 +47,15 @@ class Project
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Meeting",mappedBy="project")
+     */
+    private $meetings;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->meetings = new ArrayCollection();
     }
 
     /**
@@ -190,5 +196,39 @@ class Project
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add meeting
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     *
+     * @return Project
+     */
+    public function addMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        $this->meetings[] = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * Remove meeting
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     */
+    public function removeMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        $this->meetings->removeElement($meeting);
+    }
+
+    /**
+     * Get meetings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMeetings()
+    {
+        return $this->meetings;
     }
 }
