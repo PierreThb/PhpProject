@@ -8,7 +8,6 @@
 
 namespace AppBundle\Controller;
 
-
 use AppBundle\Entity\Meeting;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
@@ -53,7 +52,7 @@ class TeamController extends Controller
                 $listProjetUnlock[] = $pr;
             }
         }
-
+            
         return $this->render(':teampage:team.html.twig',array(
             'listprojectunlock'=>$listProjetUnlock,
             'listprojectlock'=>$listProjetlock
