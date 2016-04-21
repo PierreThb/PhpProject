@@ -77,7 +77,6 @@ class AdminController extends Controller
             $password = $this->get('security.password_encoder')->encodePassword($user, $randpass);
             $user->setPassword($password);
             $user->setIsAdmin(false);
-            $user->setTeam(null);
 
             $em = $this->getDoctrine()->getManager();
             $em ->persist($user);
