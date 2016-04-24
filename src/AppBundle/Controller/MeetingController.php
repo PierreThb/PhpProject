@@ -10,9 +10,10 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Meeting;
+use AppBundle\Entity\Project;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class MeetingController extends Controller
@@ -42,5 +43,7 @@ class MeetingController extends Controller
         foreach ($arrayprj as $prj){ //browse the array of project
             $meeting = $this->getDoctrine()->getRepository(Meeting::class);
         }
+
+        return $this->render(':meetingpage:meeting.html.twig');
     }
 }

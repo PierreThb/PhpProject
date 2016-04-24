@@ -19,7 +19,7 @@ class SecurityController extends Controller
 {
 
     /**
-     * @Route("/index",name="index")
+     * @Route("/login",name="index")
      */
     public function loginAction(Request $request)
     {
