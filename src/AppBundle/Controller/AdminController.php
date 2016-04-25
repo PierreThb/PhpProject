@@ -23,6 +23,7 @@ class AdminController extends Controller
      * @param Request $request
      *
      * @Route("/adminpage/user", name="_adminuser")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function adminUserPartAction(Request $request)
     {
@@ -39,6 +40,7 @@ class AdminController extends Controller
      * @param Request $request
      *
      * @Route("/adminpage/project", name="_adminproject")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function adminProjectPartAction(Request $request)
     {

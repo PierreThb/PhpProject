@@ -125,54 +125,6 @@ class Meeting
     }
 
     /**
-     * Set time
-     *
-     * @param \DateTime $time
-     *
-     * @return Meeting
-     */
-    public function setTime($time)
-    {
-        $this->time = $time;
-
-        return $this;
-    }
-
-    /**
-     * Get time
-     *
-     * @return \DateTime
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
-
-    /**
-     * Set deadlineAgenda
-     *
-     * @param \DateTime $deadlineAgenda
-     *
-     * @return Meeting
-     */
-    public function setDeadlineAgenda($deadlineAgenda)
-    {
-        $this->deadlineAgenda = $deadlineAgenda;
-
-        return $this;
-    }
-
-    /**
-     * Get deadlineAgenda
-     *
-     * @return \DateTime
-     */
-    public function getDeadlineAgenda()
-    {
-        return $this->deadlineAgenda;
-    }
-
-    /**
      * Set room
      *
      * @param string $room
@@ -194,30 +146,6 @@ class Meeting
     public function getRoom()
     {
         return $this->room;
-    }
-
-    /**
-     * Set meetingAgenda
-     *
-     * @param \AppBundle\Entity\MeetingAgenda $meetingAgenda
-     *
-     * @return Meeting
-     */
-    public function setMeetingAgenda(\AppBundle\Entity\MeetingAgenda $meetingAgenda = null)
-    {
-        $this->meetingAgenda = $meetingAgenda;
-
-        return $this;
-    }
-
-    /**
-     * Get meetingAgenda
-     *
-     * @return \AppBundle\Entity\MeetingAgenda
-     */
-    public function getMeetingAgenda()
-    {
-        return $this->meetingAgenda;
     }
 
     /**

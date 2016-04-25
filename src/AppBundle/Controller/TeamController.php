@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Meeting;
+use AppBundle\Entity\MeetingAttendance;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
 use AppBundle\Form\MeetingType;
@@ -84,6 +85,15 @@ class TeamController extends Controller
 
             if($form->isValid())
             {
+                $listUser = $project->getUsers();
+
+                foreach ($listUser as $us){
+                    $attendance = new MeetingAttendance();
+                    $attendance->setMeeting($meeting);
+                    $attendance->setUser($us);
+                    $em->persist($attendance);
+                }
+
                 $meeting->setProject($project);
                 $project->addMeeting($meeting);
                 $em->persist($meeting);
