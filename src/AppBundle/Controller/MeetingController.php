@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Meeting;
 use AppBundle\Entity\MeetingAttendance;
 use AppBundle\Entity\Project;
+use AppBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,9 +54,42 @@ class MeetingController extends Controller
      */
     public function meetingDetailsAction(Request $request, $id)
     {
-        return $this->render(':meetingpage:meetingdetails.html.twig',array(
-            'message'=>"aucun participant pour l'instant"
+        $em = $this->getDoctrine()->getManager();
+        
+        $meeting = $em->getRepository(Meeting::class)->find($id);
+        $project = $meeting->getProject();
+        $users = $project->getUsers();
+
+        $tot = 0;
+
+        foreach ($users as $user){
+            $tot = $tot + 1;
+        }
+
+        $attendanceYes = $em->getRepository(MeetingAttendance::class)->findBy(array(
+            'meeting'=>$id,
+            'answer'=>"yes"
         ));
+
+        $totyes = 0;
+        foreach ($attendanceYes as $yes){
+            $totyes = $totyes +1;
+        }
+
+        $percentage = (100*$totyes)/$tot;
+
+        if($percentage == null){
+            return $this->render(':meetingpage:meetingdetails.html.twig',array(
+                'message'=>"No attendance yet",
+                'percentage'=>null
+            ));
+        }else{
+            return $this->render(':meetingpage:meetingdetails.html.twig',array(
+                'message'=>"",
+                'percentage'=>$percentage
+            ));
+        }
+
     }
 
     /**
@@ -72,14 +106,19 @@ class MeetingController extends Controller
             'meeting'=>$id,
             'user'=>$user->getId()
         ));
-        
-        $attendance->setAnswer("yes");
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($attendance);
-        $em->flush();
+
+        if($attendance->getAnswer() == "yes"){
+            $message = "Attendance already set at yes";
+        }else{
+            $message = "Attendance change to yes";
+            $attendance->setAnswer("yes");
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($attendance);
+            $em->flush();
+        }
 
         return $this->render(':meetingpage:changeanswerconfirm.html.twig',array(
-            'message'=>"Attendance change to yes"
+            'message'=>$message
         ));
     }
 
@@ -94,8 +133,8 @@ class MeetingController extends Controller
     {
         $user = $this->getUser();
         $attendance = $this->getDoctrine()->getManager()->getRepository(MeetingAttendance::class)->findOneBy(array(
-            'meeting_id'==$id,
-            'user_id'==$user->getId()
+            'meeting'==$id,
+            'user'==$user->getId()
         ));
 
         $attendance->setAnswer("maybe");
@@ -119,8 +158,8 @@ class MeetingController extends Controller
     {
         $user = $this->getUser();
         $attendance = $this->getDoctrine()->getManager()->getRepository(MeetingAttendance::class)->findOneBy(array(
-            'meeting_id'==$id,
-            'user_id'==$user->getId()
+            'meeting'==$id,
+            'user'==$user->getId()
         ));
 
         $attendance->setAnswer("no");

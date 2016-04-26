@@ -1,5 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
+    {% if percentage == null %}
         {{ message }}
+        <button><a href={{ path('_meeting') }}>Ok</a></button>
+    {% else %}
+        <p>{{ percentage }}% members have indicated they can attend the meeting for now.</p>
+        <button><a href={{ path('_meeting') }}>Ok</a></button>
+    {% endif %}
 {% endblock %}
