@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Pierre
+ * Date: 26/04/2016
+ * Time: 22:27
+ */
 
 namespace AppBundle\Entity;
 
@@ -21,6 +27,35 @@ class Item
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $name;
+
+    /**
+     * @var MeetingAgenda
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingAgenda",inversedBy="items")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $agenda;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="proposer_id",referencedColumnName="id")
+     */
+    private $proposer;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $number;
 
     /**
      * Get id

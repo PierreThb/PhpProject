@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Pierre
+ * Date: 26/04/2016
+ * Time: 22:27
+ */
 
 namespace AppBundle\Entity;
 
@@ -7,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * MeetingAgenda
  *
- * @ORM\Table(name="meeting_agenda")
+ * @ORM\Table(name="meetingagenda")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MeetingAgendaRepository")
  */
 class MeetingAgenda
@@ -21,7 +27,21 @@ class MeetingAgenda
      */
     private $id;
 
+    /**
+     * @var Meeting
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting",inversedBy="agendas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $meeting;
 
+    /**
+     * @var ArrayCollection
+     *
+     *@ORM\OneToMany(targetEntity="AppBundle\Entity\Item",mappedBy="agenda",cascade={"persist","remove"})
+     */
+    private $items;
+    
     /**
      * Get id
      *

@@ -8,7 +8,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Item;
 use AppBundle\Entity\Meeting;
+use AppBundle\Entity\MeetingAgenda;
 use AppBundle\Entity\MeetingAttendance;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
@@ -94,10 +96,43 @@ class TeamController extends Controller
                     $em->persist($attendance);
                 }
 
+                /*
+                 * create the first agenda for the meeting
+                 */
+                $agenda = new MeetingAgenda();
+                $agenda->setMeeting($meeting);
+
+                /*
+                 * create and set to the agenda the 3 minimum items
+                 */
+                $item1 = new Item();
+                $item1->setAgenda($agenda);
+                $item1->setNumber(1);
+                $item1->setName("apologies received");
+                $item1->setProposer($project->getLeader());
+                $item2 = new Item();
+                $item2->setAgenda($agenda);
+                $item2->setNumber(2);
+                $item2->setName("agree agenda");
+                $item2->setProposer($project->getLeader());
+                $item3 = new Item();
+                $item3->setAgenda($agenda);
+                $item3->setNumber(3);
+                $item3->setName("accept minutes of previous meeting");
+                $item3->setProposer($project->getLeader());
+                
+                $agenda->addItem($item1);
+                $agenda->addItem($item2);
+                $agenda->addItem($item3);
+
                 $meeting->setProject($project);
                 $project->addMeeting($meeting);
                 $em->persist($meeting);
                 $em->persist($project);
+                $em->persist($agenda);
+                $em->persist($item1);
+                $em->persist($item2);
+                $em->persist($item3);
                 $em->flush();
 
                 return $this->render(':teampage:newmeetingconfirm.html.twig',array(
