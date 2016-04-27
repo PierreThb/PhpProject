@@ -1,0 +1,11 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <div id="divnewuser">
+        <p>Enter the title off the new item you want to add to the agenda: </p>
+        {{ form_start(form) }}
+            {{ form_row(form.content) }}
+            <button type="submit">Send the request !</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

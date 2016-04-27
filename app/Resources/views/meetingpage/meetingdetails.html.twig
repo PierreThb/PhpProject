@@ -1,11 +1,33 @@
 {% extends 'layout.html.twig' %}
 
+
+
 {% block body %}
-    {% if percentage == null %}
-        {{ message }}
-        <button><a href={{ path('_meeting') }}>Ok</a></button>
-    {% else %}
-        <p>{{ percentage }}% members have indicated they can attend the meeting for now.</p>
-        <button><a href={{ path('_meeting') }}>Ok</a></button>
-    {% endif %}
+    <link rel="stylesheet" href="{{ asset('assets/css/meeting.css') }}">
+    <button><a href={{ path('_meeting') }}><< Back to the meeting page</a></button>
+    <hr>
+    <div class="row" id="toprow">
+        <div class="col-sm-6">
+            {% if percentage == null %}
+                {{ message }}
+            {% else %}
+                <p>{{ percentage }}% members have indicated they can attend the meeting for now.</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-6" id="divd">
+            <h2 id="h2item">Items</h2>
+            {% for item in items %}
+                <p>{{ item.number }}: {{ item.name }}   |   Proposer: {{ item.proposer.username }}</p>
+            {% endfor %}
+            <p><a href={{ path('_newitem',{'id':meetingId}) }}>Add a new item for the agenda</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>User requests</h2>
+        </div>
+        <div class="col-sm-6">
+            <p>righ</p>
+        </div>
+    </div>
 {% endblock %}

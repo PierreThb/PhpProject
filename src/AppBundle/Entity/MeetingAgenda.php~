@@ -30,7 +30,7 @@ class MeetingAgenda
     /**
      * @var Meeting
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting",inversedBy="agendas")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting")
      * @ORM\JoinColumn(nullable=false)
      */
     private $meeting;
@@ -50,5 +50,70 @@ class MeetingAgenda
     public function getId()
     {
         return $this->id;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set meeting
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     *
+     * @return MeetingAgenda
+     */
+    public function setMeeting(\AppBundle\Entity\Meeting $meeting)
+    {
+        $this->meeting = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * Get meeting
+     *
+     * @return \AppBundle\Entity\Meeting
+     */
+    public function getMeeting()
+    {
+        return $this->meeting;
+    }
+
+    /**
+     * Add item
+     *
+     * @param \AppBundle\Entity\Item $item
+     *
+     * @return MeetingAgenda
+     */
+    public function addItem(\AppBundle\Entity\Item $item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \AppBundle\Entity\Item $item
+     */
+    public function removeItem(\AppBundle\Entity\Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 }

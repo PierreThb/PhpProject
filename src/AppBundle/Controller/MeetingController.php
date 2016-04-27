@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Meeting;
+use AppBundle\Entity\MeetingAgenda;
 use AppBundle\Entity\MeetingAttendance;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
@@ -59,6 +60,10 @@ class MeetingController extends Controller
         $meeting = $em->getRepository(Meeting::class)->find($id);
         $project = $meeting->getProject();
         $users = $project->getUsers();
+        $agenda = $em->getRepository(MeetingAgenda::class)->findOneBy(array(
+           'meeting'=>$meeting
+        ));
+        $items = $agenda->getItems();
 
         $tot = 0;
 
@@ -81,12 +86,16 @@ class MeetingController extends Controller
         if($percentage == null){
             return $this->render(':meetingpage:meetingdetails.html.twig',array(
                 'message'=>"No attendance yet",
-                'percentage'=>null
+                'percentage'=>null,
+                'items'=>$items,
+                'meetingId'=>$id
             ));
         }else{
             return $this->render(':meetingpage:meetingdetails.html.twig',array(
                 'message'=>"",
-                'percentage'=>$percentage
+                'percentage'=>$percentage,
+                'items'=>$items,
+                'meetingId'=>$id
             ));
         }
 

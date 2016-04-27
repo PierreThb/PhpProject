@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,7 +31,7 @@ class MeetingAgenda
     /**
      * @var Meeting
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting",inversedBy="agendas")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting")
      * @ORM\JoinColumn(nullable=false)
      */
     private $meeting;
@@ -56,7 +57,7 @@ class MeetingAgenda
      */
     public function __construct()
     {
-        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->items = new ArrayCollection();
     }
 
     /**
@@ -66,7 +67,7 @@ class MeetingAgenda
      *
      * @return MeetingAgenda
      */
-    public function setMeeting(\AppBundle\Entity\Meeting $meeting)
+    public function setMeeting(Meeting $meeting)
     {
         $this->meeting = $meeting;
 
@@ -90,7 +91,7 @@ class MeetingAgenda
      *
      * @return MeetingAgenda
      */
-    public function addItem(\AppBundle\Entity\Item $item)
+    public function addItem(Item $item)
     {
         $this->items[] = $item;
 
@@ -102,7 +103,7 @@ class MeetingAgenda
      *
      * @param \AppBundle\Entity\Item $item
      */
-    public function removeItem(\AppBundle\Entity\Item $item)
+    public function removeItem(Item $item)
     {
         $this->items->removeElement($item);
     }
