@@ -1,7 +1,14 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Pierre
+ * Date: 29/04/2016
+ * Time: 18:52
+ */
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,14 +28,44 @@ class MeetingMinutes
      */
     private $id;
 
+    /**
+     * @var Meeting
+     */
+    private $meeting;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @var User
      */
-    public function getId()
+    private $secretary;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Presence",mappedBy="meetingMinute")
+     */
+    private $presences;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MinutesComment",mappedBy="meetingMinute")
+     */
+    private $comments;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MinuteItem",mappedBy="meetingMinute")
+     */
+    private $minuteItems;
+
+    /**
+     * MeetingMinutes constructor.
+     */
+    public function __construct()
     {
-        return $this->id;
+        $this->comments = new ArrayCollection();
+        $this->minuteItems = new ArrayCollection();
+        $this->presences = new ArrayCollection();
     }
 }
