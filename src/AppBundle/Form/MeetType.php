@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Pierre
- * Date: 17/04/2016
- * Time: 13:47
+ * Date: 29/04/2016
+ * Time: 13:07
  */
 
 namespace AppBundle\Form;
@@ -18,12 +18,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
-class MeetingType extends AbstractType
+class MeetType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('date',DateTimeType::class, array(
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text',
+                'data' => new \DateTime
+            ))
+            ->add('deadline',DateTimeType::class, array(
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
                 'data' => new \DateTime
@@ -41,5 +46,13 @@ class MeetingType extends AbstractType
                 'class' => 'AppBundle:User'
             ))
         ;
+    }
+
+    public function setDefaultOption(OptionsResolver $resolver)
+    {
+        /** @var OptionsResolver $resolver */
+        $resolver->setDefaults(array(
+            'data_class'=>'AppBundle\Entity\Meeting'
+        ));
     }
 }

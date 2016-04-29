@@ -3,5 +3,9 @@
 {% block body %}
     {{ message }}
     <hr>
-    <a href={{ path('_team') }}>Ok</a>
+    {% if path == '_meetingdetails' %}
+        <a href={{ path(path,{'id':id}) }}>Ok</a>
+    {% else %}
+        <a href={{ path(path) }}>Ok</a>
+    {% endif %}
 {% endblock %}

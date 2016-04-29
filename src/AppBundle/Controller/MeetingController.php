@@ -9,11 +9,13 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Item;
 use AppBundle\Entity\Meeting;
 use AppBundle\Entity\MeetingAgenda;
 use AppBundle\Entity\MeetingAttendance;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
+use AppBundle\Entity\UserRequest;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,15 +57,37 @@ class MeetingController extends Controller
      */
     public function meetingDetailsAction(Request $request, $id)
     {
+        $myUser = $this->getUser();
+
         $em = $this->getDoctrine()->getManager();
         
         $meeting = $em->getRepository(Meeting::class)->find($id);
+        $deadline = $meeting->getDeadline();
+        $today = new \DateTime('now');
+
+        $okDeadline = false;
+
+        if($deadline > $today){
+            $okDeadline = true;
+        }
+
         $project = $meeting->getProject();
+        $leader = $project->getLeader();
+
+        if($leader == $myUser){
+            $ok = true;
+        }else{
+            $ok = false;
+        }
+
         $users = $project->getUsers();
         $agenda = $em->getRepository(MeetingAgenda::class)->findOneBy(array(
            'meeting'=>$meeting
         ));
-        $items = $agenda->getItems();
+        $items = $em->getRepository(Item::class)->findBy(
+            array('agenda'=>$agenda),
+            array('number'=>'ASC')
+        );
 
         $tot = 0;
 
@@ -84,21 +108,27 @@ class MeetingController extends Controller
         $percentage = (100*$totyes)/$tot;
 
         if($percentage == null){
-            return $this->render(':meetingpage:meetingdetails.html.twig',array(
-                'message'=>"No attendance yet",
-                'percentage'=>null,
-                'items'=>$items,
-                'meetingId'=>$id
-            ));
+            $message = "No attendance yet";
+            $percentage = null;
         }else{
-            return $this->render(':meetingpage:meetingdetails.html.twig',array(
-                'message'=>"",
-                'percentage'=>$percentage,
-                'items'=>$items,
-                'meetingId'=>$id
-            ));
+            $message = "";
         }
 
+        $requests = $em->getRepository(UserRequest::class)->findBy(array(
+            'agenda'=>$agenda
+        ));
+
+        return $this->render(':meetingpage:meetingdetails.html.twig',array(
+            'message'=>$message,
+            'percentage'=>$percentage,
+            'items'=>$items,
+            'meetingId'=>$id,
+            'meeting'=>$meeting,
+            'requests'=>$requests,
+            'ok'=>$ok,
+            'okDeadline'=>$okDeadline,
+            'today'=>$today
+        ));
     }
 
     /**

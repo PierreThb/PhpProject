@@ -15,6 +15,7 @@ use AppBundle\Entity\MeetingAttendance;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
 use AppBundle\Form\MeetingType;
+use AppBundle\Form\MeetType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,10 +80,11 @@ class TeamController extends Controller
 
         if($username != $leader){
             return $this->render(':errors:error.html.twig',array(
-               'message'=>'Only the leader can add a meeting'
+                'message'=>'Only the leader can add a meeting',
+                'path'=>'_team'
             ));
         }else{
-            $form = $this->createForm(MeetingType::class, $meeting);
+            $form = $this->createForm(MeetType::class, $meeting);
             $form->handleRequest($request);
 
             if($form->isValid())

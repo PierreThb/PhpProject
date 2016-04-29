@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Repository\UserRequestRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,7 +58,8 @@ class UserRequest
     /**
      * Type has three different possible value:
      * - "additional" : if a user ask to add a new item
-     * - "changes" : if a user ask to do a change on an item
+     * - "changes" : if a user ask to do a change on the subject of an item
+     * - "re-ordering" : if a user ask to change the order of an item
      * - "postponing" : if a user want to postpone an item to an other meeting
      *
      * @var string

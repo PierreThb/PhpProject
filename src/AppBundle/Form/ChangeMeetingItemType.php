@@ -2,18 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: Pierre
- * Date: 27/04/2016
- * Time: 22:59
+ * Date: 28/04/2016
+ * Time: 20:35
  */
 
 namespace AppBundle\Form;
 
+use Doctrine\ORM\Mapping\Entity;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class NewItemType extends AbstractType
+class ChangeMeetingItemType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -21,8 +22,12 @@ class NewItemType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /** @var FormBuilderInterface $builder */
-        $builder->add('content',TextType::class);
+        $builder
+            ->add('meeting',EntityType::class,array(
+                'choice_label'=>'id',
+                'class'=> 'AppBundle\Meeting'
+            ))
+        ;
     }
 
     /**
@@ -30,9 +35,9 @@ class NewItemType extends AbstractType
      */
     public function setDefaultOption(OptionsResolver $resolver)
     {
-        /** @var OptionsResolver $resolver */
+        /** @var TYPE_NAME $resolver */
         $resolver->setDefaults(array(
-           'data_class'=>'AppBundle\Entity\UserRequest'
+            'data_class'=>'AppBundle\Entity\Item'
         ));
     }
 }

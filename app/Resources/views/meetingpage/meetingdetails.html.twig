@@ -1,30 +1,89 @@
 {% extends 'layout.html.twig' %}
 
-
-
 {% block body %}
     <link rel="stylesheet" href="{{ asset('assets/css/meeting.css') }}">
-    <button><a href={{ path('_meeting') }}><< Back to the meeting page</a></button>
+    {% if okDeadline == 1 %}
+        <p><button><a href={{ path('_meeting') }}><< Back to the meeting page</a></button>  Meeting details for project {{ meeting.project.name }}. Deadline for requests is the {{ meeting.deadline | date("m/d/Y") }}, today is {{ today | date("m/d/Y") }} (okDeadline = {{ okDeadline }})</p>
+    {% else %}
+        <p><button><a href={{ path('_meeting') }}><< Back to the meeting page</a></button>  Meeting details for project {{ meeting.project.name }}. The deadline was {{ meeting.deadline | date("m/d/Y") }} and is crossed, you can't change the agenda anymore.</p>
+    {% endif %}
     <hr>
     <div class="row" id="toprow">
+        <div class="col-sm-6">
+            <h2>User requests</h2>
+            {% if okDeadline == true %} {# if deadline not crossed yet #}
+                {% if ok == true %}
+                    {% for request in requests %}
+                        {% if request.state == "pending" %}
+                            {% if request.type == "re-ordering" %}
+                                <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: Change position to {{ request.content }} / State: {{ request.state }} / <a href={{ path('_noted',{'id':request.id}) }}>Noted</a> / <a href={{ path('_agreed',{'id':request.id}) }}>Agreed</a></p>
+                            {% else %}
+                                <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: {{ request.content }} / State: {{ request.state }} / <a href={{ path('_noted',{'id':request.id}) }}>Noted</a> / <a href={{ path('_agreed',{'id':request.id}) }}>Agreed</a></p>
+                            {% endif %}
+
+                            {% elseif request.state == "noted" %}
+                                {% if request.type == "re-ordering" %}
+                                    <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: Change position to {{ request.content }} / State: {{ request.state }} / <a href={{ path('_agreed',{'id':request.id}) }}>Agreed</a></p>
+                                {% else %}
+                                    <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: {{ request.content }} / State: {{ request.state }} / <a href={{ path('_agreed',{'id':request.id}) }}>Agreed</a></p>
+                                {% endif %}
+
+                        {% else %}
+                            {% if request.type == "re-ordering" %}
+                                <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: Change position to {{ request.content }} / State: {{ request.state }}
+                            {% else %}
+                                <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: {{ request.content }} / State: {{ request.state }}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for request in requests %}
+                        {% if request.type == "re-ordering" %}
+                            <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: Change position to {{ request.content }} / State: {{ request.state }}
+                        {% else %}
+                            <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: {{ request.content }} / State: {{ request.state }}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% else %} {# if deadline crossed#}
+                {% for request in requests %}
+                    {% if request.type == "re-ordering" %}
+                        <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: Change position to {{ request.content }} / State: {{ request.state }}</p>
+                    {% else %}
+                        <p>Proposer: {{ request.user.username }} / Type: {{ request.type }} / Title: {{ request.content }} / State: {{ request.state }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-sm-6" id="divd">
+            <h2 id="h2item">Items</h2>
+            {% if okDeadline == true %}
+                {% for item in items %}
+                    {% if item.number < 4 %}
+                        <p>{{ item.number }}: {{ item.name }} / Proposer: {{ item.proposer.username }}</p>
+                    {% else %}
+                        <p>{{ item.number }}: {{ item.name }} / Proposer: {{ item.proposer.username }} / <a href={{ path('_changeItem',{'id':item.id}) }}>Change item</a> / <a href={{ path('_orderingItem',{'id':item.id}) }}>Change order</a> / <a href="#">Postpone</a></p>
+                    {% endif %}
+                {% endfor %}
+                <p><a href={{ path('_newitem',{'id':meetingId}) }}>Add a new item for the agenda</a></p>
+            {% else %}
+                {% for item in items %}
+                    {% if item.number < 4 %}
+                        <p>{{ item.number }}: {{ item.name }} / Proposer: {{ item.proposer.username }}</p>
+                    {% else %}
+                        <p>{{ item.number }}: {{ item.name }} / Proposer: {{ item.proposer.username }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-6">
             {% if percentage == null %}
                 {{ message }}
             {% else %}
                 <p>{{ percentage }}% members have indicated they can attend the meeting for now.</p>
             {% endif %}
-        </div>
-        <div class="col-sm-6" id="divd">
-            <h2 id="h2item">Items</h2>
-            {% for item in items %}
-                <p>{{ item.number }}: {{ item.name }}   |   Proposer: {{ item.proposer.username }}</p>
-            {% endfor %}
-            <p><a href={{ path('_newitem',{'id':meetingId}) }}>Add a new item for the agenda</a></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <h2>User requests</h2>
         </div>
         <div class="col-sm-6">
             <p>righ</p>

@@ -67,6 +67,13 @@ class Meeting
     private $project;
 
     /**
+     * @var date
+     *
+     * @ORM\Column(name="deadline",type="datetime")
+     */
+    private $deadline;
+
+    /**
      * Get id
      *
      * @return int
@@ -218,5 +225,29 @@ class Meeting
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set deadline
+     *
+     * @param \DateTime $deadline
+     *
+     * @return Meeting
+     */
+    public function setDeadline($deadline)
+    {
+        $this->deadline = $deadline;
+
+        return $this;
+    }
+
+    /**
+     * Get deadline
+     *
+     * @return \DateTime
+     */
+    public function getDeadline()
+    {
+        return $this->deadline;
     }
 }
