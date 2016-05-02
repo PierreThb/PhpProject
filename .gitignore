@@ -15,8 +15,12 @@
 /bin/
 /tests/
 /vendor/
+/var/
 composer.lock
 /web/assets/vendor
 /web/bundles/
 .idea/
+phpDocumentor.phar
+/Documentation/
+!Documentation/index.html
 
