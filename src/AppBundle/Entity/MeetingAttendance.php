@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 24/04/2016
  * Time: 21:12
+ *
+ * This file contains the MeetingAttendance entity
  */
 
 namespace AppBundle\Entity;
@@ -14,7 +16,10 @@ use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\Time;
 
 /**
- * MeetingAttendance
+ * Each meeting has a MeetingAttendance
+ * for each member of the team.
+ * A MeetingAttendance is defined by the related meeting,
+ * a user and his answer.
  *
  * @ORM\Table(name="meetingAttendance")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MeetingAttendanceRepository")

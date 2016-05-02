@@ -1,12 +1,16 @@
 <?php
-
+/**
+ * This file contains the User entity
+ */
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * User
+ * The admin can create User. Each user is defined
+ * by a name, has a password (crypt) and a boolean
+ * to be or not an admin user.
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")

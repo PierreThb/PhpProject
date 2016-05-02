@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 29/04/2016
  * Time: 19:06
+ * 
+ * This file contains the MinutesComment entity
  */
 
 namespace AppBundle\Entity;
@@ -12,7 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\MeetingMinutes;
 use AppBundle\Entity\User;
 /**
- * MinutesComment
+ * Each member present at the meeting can
+ * add MinutesComment. It is defined by the user
+ * who added the comment, the related MeetingMinute
+ * and the content of the comment.
  *
  * @ORM\Table(name="minutes_comment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MinutesCommentRepository")

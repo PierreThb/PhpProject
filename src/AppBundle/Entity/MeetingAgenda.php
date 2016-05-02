@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 26/04/2016
  * Time: 22:27
+ *
+ * This file contains the MeetingAgenda entity
  */
 
 namespace AppBundle\Entity;
@@ -12,7 +14,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MeetingAgenda
+ * Each meeting has a MeetingAgenda.
+ * It is defined by the related meeting
+ * ad set of items.
  *
  * @ORM\Table(name="meetingagenda")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MeetingAgendaRepository")

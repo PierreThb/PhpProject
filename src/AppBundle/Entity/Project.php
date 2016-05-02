@@ -1,12 +1,18 @@
 <?php
 
+/**
+ * This file contains the Project entity
+ */
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Project
+ * The admin can create Project. Each project
+ * is defined by a name, a leader, a secretary,
+ * a set of users, a boolean to lock and unlock the project
+ * and a set of meetings (is null when the project is created)
  *
  * @ORM\Table(name="project")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectRepository")

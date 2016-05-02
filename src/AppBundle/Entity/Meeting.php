@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * This file contains the Meeting entity
+ */
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +9,12 @@ use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\Time;
 
 /**
- * Meeting
+ * A Meeting is related to a Project. Each Project
+ * can have several Meeting.
+ * A Meeting is defined by a duration,
+ * a date, a room, the a meeting chair (leader),
+ * a meeting secretary, the related project and a
+ * deadline.
  *
  * @ORM\Table(name="meeting")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MeetingRepository")
@@ -24,7 +31,7 @@ class Meeting
     private $id;
 
     /**
-     * @var int
+     * @var time
      *
      * @ORM\Column(name="duration",type="time")
      */

@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 27/04/2016
  * Time: 21:32
+ *
+ * This file contains the UserRequest entity
  */
 
 namespace AppBundle\Entity;
@@ -12,7 +14,11 @@ use AppBundle\Repository\UserRequestRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UserRequest
+ * Each member make request to the meeting leader
+ * about the MeetingAgenda. Each UserRequest is
+ * defined by teh related MeetingAgenda, the user
+ * who did the request, the related item, the type
+ * of request, the state of the request and the content.
  *
  * @ORM\Table(name="userRequest")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRequestRepository")

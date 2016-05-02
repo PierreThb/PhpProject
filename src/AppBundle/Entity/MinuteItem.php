@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 29/04/2016
  * Time: 19:13
+ *
+ * This file contains the MinuteItem entity
  */
 
 namespace AppBundle\Entity;
@@ -12,7 +14,11 @@ use AppBundle\Entity\Item;
 use AppBundle\Entity\ItemAction;
 use Doctrine\ORM\Mapping as ORM;
 /**
- * MinuteItem
+ * Each MeetingMinute contains at least
+ * three MinuteItem which are defined by
+ * an item, the related MeetingMinute,
+ * an action, a comment and a postponed
+ * boolean.
  *
  * @ORM\Table(name="minute_item")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MinuteItemRepository")

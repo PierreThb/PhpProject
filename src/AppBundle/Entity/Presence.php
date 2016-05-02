@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 29/04/2016
  * Time: 19:16
+ *
+ * This file contains the Presence entity
  */
 
 namespace AppBundle\Entity;
@@ -13,7 +15,10 @@ use AppBundle\Entity\MeetingMinutes;
 use AppBundle\Entity\User;
 
 /**
- * Presence
+ * Each member of the team has a Presence
+ * object for each meeting. It is defined by
+ * the related user, the related MeetingMinute
+ * and the string type which describe the Presence.
  *
  * @ORM\Table(name="presence")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PresenceRepository")
@@ -38,6 +43,15 @@ class Presence
     private $user;
 
     /**
+     * Possible values are:
+     * - "present_whole_meeting"
+     * - "late"
+     * - "left_early"
+     * - "late_and_left_early"
+     * - "absent_no_apologies"
+     * - "absent_apologies_before"
+     * - "absent_apologies_after"
+     *
      * @var string
      *
      * @ORM\Column(type="string")

@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 29/04/2016
  * Time: 19:19
+ *
+ * This file contains the entity ItemAction
  */
 
 namespace AppBundle\Entity;
@@ -13,7 +15,11 @@ use AppBundle\Entity\User;
 use AppBundle\Entity\MinuteItem;
 
 /**
- * ItemAction
+ * ItemAction is the entity for each
+ * action which can be performed on an
+ * item and is defined by the related item,
+ * the state of the action, a description,
+ * an implementer and a deadline.
  *
  * @ORM\Table(name="item_action")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ItemActionRepository")

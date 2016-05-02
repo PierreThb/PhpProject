@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 29/04/2016
  * Time: 18:52
+ *
+ * This file contains the MeetingMinutes entity
  */
 
 namespace AppBundle\Entity;
@@ -12,7 +14,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MeetingMinutes
+ * Each meeting, when his deadline is crossed,
+ * has a MeetingMinutes which is defined by the related
+ * meeting, a set of Presence, a set of comments and a set
+ * of minuteItem.
  *
  * @ORM\Table(name="meeting_minutes")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MeetingMinutesRepository")
