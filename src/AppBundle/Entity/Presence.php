@@ -47,7 +47,7 @@ class Presence
     /**
      * @var MeetingMinutes
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingMinutes",inversedBy="presences")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingMinutes",inversedBy="presences",cascade={"persist"})
      * @ORM\JoinColumn(name="meeting_id",referencedColumnName="id")
      */
     private $meetingMinute;

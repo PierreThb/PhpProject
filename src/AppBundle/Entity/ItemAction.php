@@ -38,6 +38,13 @@ class ItemAction
     private $item;
 
     /**
+     * possible values are:
+     * - "in_progress"
+     * - "late"
+     * - "work_under_review"
+     * - "complete"
+     * - "no_longer_required"
+     *
      * @var string
      * @ORM\Column(type="string")
      */
@@ -70,6 +77,7 @@ class ItemAction
     public function __construct()
     {
         $this->state = "in_progress";
+        $this->description= "";
     }
 
     /**

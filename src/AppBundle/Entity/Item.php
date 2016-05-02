@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 26/04/2016
  * Time: 22:27
+ *
+ * This file contain the entity Item
  */
 
 namespace AppBundle\Entity;
@@ -11,7 +13,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Item
+ * Item is related to an agenda,
+ * has a name, a proposer and a number
  *
  * @ORM\Table(name="item")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ItemRepository")

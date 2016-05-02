@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <button><a href={{ path('_meetingdetails',{'id':meeting.id}) }}><< Back to the meeting details</a></button>
+    <hr>
+    <div class="row" id="toprow">
+        <div class="col-sm-6">
+            {% for presence in presences %}
+                {% if presence.type == "present_for_whole_meeting" %}
+                    <p>User {{ presence.user.username }} was present for the whole meeting.</p>
+                {% else %}
+                    <p>User {{ presence.user.username }} was absent with no apologies presented.</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-sm-6">
+            {% for item in items %}
+                <p>{{ item.number }}: {{ item.name }} / <a href={{ path('_newaction',{'id':item.id}) }}>add action</a> / <a href={{ path('_allactions',{'id':item.id}) }}>see all actions ...</a></p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row" id="toprow">
+        <div class="col-sm-12">
+            <hr>
+            <button><a href={{ path('_comment',{'id':meeting.id}) }}>Add a comment</a></button>
+            <hr>
+            {% if comments == null %}
+                <p>No comments for the moment</p>
+            {% else %}
+                {% for comment in comments %}
+                    <p>Comment: "{{ comment.content }}", Add by: {{ comment.user.username }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -47,6 +47,12 @@ class MeetingAttendance
     private $user;
 
     /**
+     * Possible value are:
+     * - "yes"
+     * - "no"
+     * - "maybe"
+     * - the default one is "notanswer"
+     *
      * @var string
      *
      * @ORM\Column(name="userAnswer",type="string")

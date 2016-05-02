@@ -30,13 +30,11 @@ class MeetingMinutes
 
     /**
      * @var Meeting
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting")
+     * @ORM\JoinColumn(name="meeting_id",referencedColumnName="id")
      */
     private $meeting;
-
-    /**
-     * @var User
-     */
-    private $secretary;
 
     /**
      * @var ArrayCollection
@@ -179,5 +177,29 @@ class MeetingMinutes
     public function getMinuteItems()
     {
         return $this->minuteItems;
+    }
+
+    /**
+     * Set meeting
+     *
+     * @param \AppBundle\Entity\Meeting $meeting
+     *
+     * @return MeetingMinutes
+     */
+    public function setMeeting(\AppBundle\Entity\Meeting $meeting = null)
+    {
+        $this->meeting = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * Get meeting
+     *
+     * @return \AppBundle\Entity\Meeting
+     */
+    public function getMeeting()
+    {
+        return $this->meeting;
     }
 }

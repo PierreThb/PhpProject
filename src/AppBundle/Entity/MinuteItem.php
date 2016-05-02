@@ -38,6 +38,14 @@ class MinuteItem
     private $item;
 
     /**
+     * @var MeetingMinutes
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingMinutes",inversedBy="minuteItems")
+     * @ORM\JoinColumn(name="meeting_minute_id",referencedColumnName="id")
+     */
+    private $meetingMinute;
+
+    /**
      * @var ItemAction
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\ItemAction",mappedBy="item")

@@ -86,7 +86,13 @@
             {% endif %}
         </div>
         <div class="col-sm-6">
-            <p>righ</p>
+            {% if okDeadline == false %}
+                {% if already == null %}
+                    <p>The secretary can publish the meeting minute: <a href={{ path('_publish',{'id':meeting.id}) }}>Publish</a></p>
+                {% else %}
+                    <p>See meeting minutes: <a href={{ path('_minutes',{'id':meeting.id}) }}>Minutes</a></p>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

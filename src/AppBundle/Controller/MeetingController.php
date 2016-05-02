@@ -13,6 +13,7 @@ use AppBundle\Entity\Item;
 use AppBundle\Entity\Meeting;
 use AppBundle\Entity\MeetingAgenda;
 use AppBundle\Entity\MeetingAttendance;
+use AppBundle\Entity\MeetingMinutes;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
 use AppBundle\Entity\UserRequest;
@@ -118,6 +119,10 @@ class MeetingController extends Controller
             'agenda'=>$agenda
         ));
 
+        $already = $em->getRepository(MeetingMinutes::class)->findOneBy(array(
+           'meeting' => $meeting
+        ));
+
         return $this->render(':meetingpage:meetingdetails.html.twig',array(
             'message'=>$message,
             'percentage'=>$percentage,
@@ -127,7 +132,8 @@ class MeetingController extends Controller
             'requests'=>$requests,
             'ok'=>$ok,
             'okDeadline'=>$okDeadline,
-            'today'=>$today
+            'today'=>$today,
+            'already'=>$already
         ));
     }
 
