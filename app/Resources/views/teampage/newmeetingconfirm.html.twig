@@ -1,0 +1,6 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <p>A new meeting for the project {{ project }} has been had on {{ date | date("m/d/Y") }} in room {{ room }}.</p>
+    <a href={{ path('_team') }}>Ok</a>
+{% endblock %}

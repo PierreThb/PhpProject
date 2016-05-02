@@ -1,0 +1,11 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <div id="divnewuser">
+        <p>Select the meeting you where want to postpone the item: </p>
+        {{ form_start(form) }}
+            {{ form_row(form.meeting) }}
+            <button type="submit">Send the request !</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

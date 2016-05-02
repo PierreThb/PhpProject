@@ -1,0 +1,8 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <p><button><a href={{ path('_minutes',{'id':meeting.id}) }}><< Back to the meeting minute</a></button></p>
+    {% for action in actions %}
+        <p>{{ action.description }}, implement by {{ action.implementer.username }}, deadline is the {{ action.deadline | date("m/d/Y") }}. State: {{ action.state }}</p>
+    {% endfor %}
+{% endblock %}

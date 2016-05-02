@@ -1,0 +1,60 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Pierre
+ * Date: 29/04/2016
+ * Time: 19:13
+ */
+
+namespace AppBundle\Entity;
+
+use AppBundle\Entity\Item;
+use AppBundle\Entity\ItemAction;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * MinuteItem
+ *
+ * @ORM\Table(name="meeting_minutes")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MinuteItemRepository")
+ *
+ */
+class MinuteItem
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var Item
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Item")
+     * @ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     */
+    private $item;
+
+    /**
+     * @var ItemAction
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ItemAction",mappedBy="item")
+     */
+    private $action;
+
+    /**
+     * @var boolean
+     *
+     *  @ORM\Column(type="boolean")
+     */
+    private $postponed;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text",nullable=true)
+     */
+    private $comment;
+}

@@ -1,0 +1,12 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <p>admin page : new user</p>
+    <hr>
+    <div id="divnewuser">
+        {{ form_start(form) }}
+            {{ form_row(form.username) }}
+            <button type="submit">Register!</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+adminpage:
+    path: /adminpage
+    defaults: { _controller: AppBundle:Admin:adminPage}
+
+    path: /adminpage/newuser
+    defaults: { _controller: AppBundle:Admin:newUser}
+
+    path: /adminpage/newteam
+    defaults: { _controller: AppBundle:Admin:newTeam}
+
+    path: /adminpage/newproject
+    defaults: { _controller: AppBundle:Admin:newProject}
+
+    path: /adminpage/alluser
+    defaults: { _controller: AppBundle:Admin:seeAllUsers}
+
+    path: /adminpage/allteam
+    defaults: { _controller: AppBundle:Admin:seeAllTeams}
+
+team:
+    path: /teampage
+    defaults: { _controller: AppBundle:Team:teamPage}
+
+    path: /teampage/{id}
+    defaults: { _controller: AppBundle:Team:newMeeting}
+
+logout:
+    path: /

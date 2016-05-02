@@ -1,0 +1,13 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <p>meeting page</p>
+    <hr>
+    {% for prjt in prj %}
+        {% for meeting in prjt.meetings %}
+            <p>Meeting the {{ meeting.date | date("m/d/Y") }} in room {{ meeting.room }} for project {{ prjt.name }}, <a href={{ path('_meetingdetails',{'id':meeting.id}) }}>view more ...</a></p>
+            <p>Change attendance for the meeting (if you already said yes, it won't change): <a href={{ path('_answeryes',{'id':meeting.id}) }}>yes</a>   <a href={{ path('_answerno',{'id':meeting.id}) }}>no</a>   <a href={{ path('_answermaybe',{'id':meeting.id}) }}>maybe</a></p>
+            <hr>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

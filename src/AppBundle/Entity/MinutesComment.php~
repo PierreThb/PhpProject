@@ -1,0 +1,65 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Pierre
+ * Date: 29/04/2016
+ * Time: 19:06
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\MeetingMinutes;
+use AppBundle\Entity\User;
+/**
+ * MinutesComment
+ *
+ * @ORM\Table(name="meeting_minutes")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MinutesCommentRepository")
+ */
+class MinutesComment
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id",referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @var MeetingMinutes
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingMinutes",inversedBy="comments")
+     * @ORM\JoinColumn(name="meeting_minute_id",referencedColumnName="id")
+     */
+    private $meetingMinute;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     */
+    private $content;
+
+    /**
+     * MinutesComment constructor.
+     * @param \AppBundle\Entity\MeetingMinutes|null $minute
+     * @param \AppBundle\Entity\User|null $user
+     */
+    public function __construct(MeetingMinutes $minute = null, User $user = null)
+    {
+        $this->meetingMinute = $minute;
+        $this->user = $user;
+        $this->content = "";
+    }
+}
