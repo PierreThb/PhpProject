@@ -1,9 +1,0 @@
-{% extends "layout.html.twig" %}
-
-{% block body %}
-    <p>Please type your comment:</p>
-    {{ form_start(form) }}
-        {{ form_row(form.content) }}
-        <button type="submit">Save!</button>
-    {{ form_end(form) }}
-{% endblock %}
