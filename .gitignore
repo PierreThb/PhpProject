@@ -12,8 +12,9 @@
 /var/sessions/*
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
-/vendor/
 /bin/
+/tests/
+/vendor/
 composer.lock
 /web/assets/vendor
 /web/bundles/
@@ -28,6 +29,4 @@ Documentation/js
 Documentation/namespaces
 Documentation/phpdoc-cache-*
 Documentation/reports
-tests/
-var/
 /phpDocumentor.phar
