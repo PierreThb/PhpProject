@@ -16,7 +16,6 @@ use AppBundle\Entity\Meeting;
 use AppBundle\Entity\MeetingAgenda;
 use AppBundle\Entity\User;
 use AppBundle\Entity\UserRequest;
-use AppBundle\Form\ChangeMeetingItemType;
 use AppBundle\Form\ItemType;
 use AppBundle\Form\NewItemType;
 use Doctrine\Common\Collections\ArrayCollection;

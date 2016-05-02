@@ -16,6 +16,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
+/**
+ * Class ChangePasswordType
+ * Type to build the form to change the user password
+ *
+ * @package AppBundle\Form
+ */
 class ChangePasswordType extends AbstractType
 {
     /**
@@ -45,6 +51,9 @@ class ChangePasswordType extends AbstractType
         ));
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'change_passwd';

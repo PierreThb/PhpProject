@@ -13,9 +13,19 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+/**
+ * Class CommentType
+ * Type to build the form to add a comment to a MeetingMinutes
+ * 
+ * @package AppBundle\Form
+ */
 class CommentType extends AbstractType
 {
-     public function buildForm(FormBuilderInterface $builder, array $options)
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
      {
          $builder->add('content',TextType::class);
      }

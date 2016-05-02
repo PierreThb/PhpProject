@@ -18,8 +18,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
+/**
+ * Class MeetType
+ * Type to build the form to create a new Meeting
+ * 
+ * @package AppBundle\Form
+ */
 class MeetType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -48,6 +58,9 @@ class MeetType extends AbstractType
         ;
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function setDefaultOption(OptionsResolver $resolver)
     {
         /** @var OptionsResolver $resolver */

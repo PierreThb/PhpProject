@@ -13,8 +13,18 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+/**
+ * Class ProjectType
+ * Type to build the form to create a new Project
+ *
+ * @package AppBundle\Form
+ */
 class ProjectType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

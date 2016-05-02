@@ -13,6 +13,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class NewItemType
+ * Type to build the form to request to add a new item
+ *
+ * @package AppBundle\Form
+ */
 class NewItemType extends AbstractType
 {
     /**

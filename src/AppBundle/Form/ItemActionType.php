@@ -15,8 +15,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
+/**
+ * Class ItemActionType
+ * Type to build the form to add an action to an item of the MeetingMinutes
+ *
+ * @package AppBundle\Form
+ */
 class ItemActionType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

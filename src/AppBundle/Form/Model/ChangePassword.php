@@ -11,6 +11,10 @@ namespace AppBundle\Form\Model;
 
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 
+/**
+ * Class ChangePassword
+ * @package AppBundle\Form\Model
+ */
 class ChangePassword
 {
     /**
