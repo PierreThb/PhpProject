@@ -1,8 +1,11 @@
 /app/config/parameters.yml
-/bin/*
-/tests/*
+/bin/
+/tests/
 /var/
 /vendor/
 /web/bundles/
 composer.lock
 web/assets/vendor
+.idea
+phpDocumentor.phar
+/web/assets/vendor/
