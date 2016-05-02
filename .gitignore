@@ -5,7 +5,6 @@
 /vendor/
 /web/bundles/
 composer.lock
-web/assets/vendor
-.idea
+.idea/
 phpDocumentor.phar
 /web/assets/vendor/
