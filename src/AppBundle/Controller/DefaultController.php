@@ -33,4 +33,19 @@ class DefaultController extends Controller
     {
         return $this->render('index.html.twig');
     }
+
+    /**
+     * Function aboutAction
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/about",name="_about")
+     */
+    public function aboutAction(Request $request)
+    {
+        return $this->render('about.html.twig',array(
+            'user'=>$this->getUser()
+        ));
+    }
 }

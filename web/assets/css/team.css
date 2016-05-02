@@ -1,9 +1,13 @@
-.liu, .lip{
+.liteam{
     list-style-type: none;
 }
 
-#usercorps, #pcorps{
+#corps{
     margin-left: 15px;
+}
+
+.smallT{
+    font-size: x-large;
 }
 
 th, td {
@@ -19,5 +23,3 @@ table, th, td {
 .tdb{
     font-weight: bold;
 }
-
-

@@ -1,8 +1,4 @@
-.liu, .lip{
-    list-style-type: none;
-}
-
-#usercorps, #pcorps{
+#minutes{
     margin-left: 15px;
 }
 
@@ -19,5 +15,3 @@ table, th, td {
 .tdb{
     font-weight: bold;
 }
-
-

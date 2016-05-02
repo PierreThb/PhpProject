@@ -1,17 +1,14 @@
 {% extends "layout.html.twig" %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/adminpage.css') }}" >
-{% endblock %}
-
 {% block body %}
-    <p>user page for admin</p>
-    <hr>
-    <a href={{ path('_newuser') }}>new user</a></li>
-    <hr>
-    <ul>
+    <head>
+        <link rel="stylesheet" href="{{ asset('assets/css/adminpage.css') }}" >
+    </head>
+    <div id="usercorps">
+        <a href={{ path('_newuser') }}>New User</a></li>
+        <hr>
         {% for user in listuser %}
-            <li>{{ user.username }}</li>
+            <li class="liu">{{ user.username }}</li>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

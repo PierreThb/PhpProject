@@ -1,9 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Hello, here is the menu !</h1>
-    <p>If you are part of team, you can access your to your project <a href={{ path('_team') }}>here</a> and to your futur and past meetings <a href={{  path('_meeting') }}>here</a>.</p>
-    <p>If you are loggin as an admin, you are welcome to access to the admin section <a href={{ path('_adminuser') }}>here</a> to manage users or <a href={{ path('_adminproject') }}>here</a> to manage projects.</p>
-    <p>You still can try to access to the admin part without being loggin as an admin but it won't work !!</p>
-    <p>Anyway, hope this web site will help you managing your projects !</p>
+    <h1 id="menuT">Hello, here is the menu !</h1>
+    <p class="pmenu">If you are part of team, you can access your to your project <a href={{ path('_team') }}>here</a> and to your futur and past meetings <a href={{  path('_meeting') }}>here</a>.</p>
+    <p class="pmenu">If you are loggin as an admin, you are welcome to access to the admin section <a href={{ path('_adminuser') }}>here</a> to manage users or <a href={{ path('_adminproject') }}>here</a> to manage projects.</p>
+    <p class="pmenu">You still can try to access to the admin part without being loggin as an admin but it won't work !!</p>
+    <p class="pmenu">Anyway, hope this web site will help you managing your projects !</p>
+    <div id="img_menu"><img src="{{ asset('images/draw_band.jpg') }}"></div>
 {% endblock %}

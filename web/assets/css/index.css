@@ -1,6 +1,5 @@
 .button {
     background-color: #4CAF50;
-    padding: 16px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -63,4 +62,8 @@ div.block p{
 
 div.block img{
     padding-bottom: 30px;
+}
+
+#lobby{
+    text-align: center;
 }

@@ -1,15 +1,75 @@
 {% extends "layout.html.twig" %}
 
 {% block body %}
-    <p>team page</p>
-    <hr>
-    <p>Unlocked project</p>
-    {% for project in listprojectunlock %}
-        <li>name : {{ project.name  }}, leader : {{ project.leader.username }}, secretary : {{ project.secretary.username }}, <a href={{ path('_newmeeting',{'id':project.id}) }}>Add meeting</a></li>
-    {% endfor %}
-    <hr>
-    <p>Locked project</p>
-    {% for project in listprojectlock %}
-        <li>name : {{ project.name  }}, leader : {{ project.leader.username }}, secretary : {{ project.secretary.username }}, locked : {{ project.islocked }}</li>
-    {% endfor %}
+    <head>
+        <link rel="stylesheet" href="{{ asset('assets/css/team.css') }}">
+    </head>
+
+    <div id="corps">
+        <p class="smallT">Unlocked project:</p>
+        <table>
+                <tr>
+                    <td class="tdb">
+                        Name
+                    </td>
+                    <td class="tdb">
+                        Leader
+                    </td>
+                    <td class="tdb">
+                        Secretary
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            {% for project in listprojectunlock %}
+                <tr>
+                    <td>
+                        {{ project.name  }}
+                    </td>
+                    <td>
+                        {{ project.leader.username }}
+                    </td>
+                    <td>
+                        {{ project.secretary.username }}
+                    </td>
+                    <td>
+                        <a href={{ path('_newmeeting',{'id':project.id}) }}>Add meeting</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <p class="smallT">Locked project:</p>
+        <table>
+                <tr>
+                    <td class="tdb">
+                        Name
+                    </td>
+                    <td class="tdb">
+                        Leader
+                    </td>
+                    <td class="tdb">
+                        Secretary
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            {% for project in listprojectlock %}
+                <tr>
+                    <td>
+                        {{ project.name  }}
+                    </td>
+                    <td>
+                        {{ project.leader.username }}
+                    </td>
+                    <td>
+                        {{ project.secretary.username }}
+                    </td>
+                    <td>
+                        <a href={{ path('_newmeeting',{'id':project.id}) }}>Add meeting</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <head>
+        <link rel="stylesheet" href="{{ asset('/assets/css/main.css') }}">
+    </head>
+
+    <div id="about">
+        Hello {{ user.username }} ! This website has been realized with Symfony 3, Php, Twig, Silex and include a documentation !
+    </div>
+{% endblock %}

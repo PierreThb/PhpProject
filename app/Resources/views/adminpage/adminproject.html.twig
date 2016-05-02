@@ -1,19 +1,38 @@
 {% extends "layout.html.twig" %}
 
 {% block body %}
-    <p>project page for admin</p>
-    <hr>
-    <a href={{ path('_newproject') }}>new project</a></li>
-    <hr>
-    <ul>
-        {% for project in listprojectunlock %}
-            <li>{{ project.name }} , <a href={{ path('_lock',{'id':project.id}) }}>Lock</a></li>
-        {% endfor %}
-    </ul>
-    <hr>
-    <ul>
-        {% for project in listprojectlock %}
-            <li>{{ project.name }} , <a href={{ path('_unlock',{'id':project.id}) }}>Unlock</a></li>
-        {% endfor %}
-    </ul>
+    <head>
+        <link rel="stylesheet" href="{{ asset('/assets/css/adminpage.css') }}">
+    </head>
+
+    <div id="pcorps">
+        <a href={{ path('_newproject') }}>New Project</a></li>
+        <hr>
+        <table>
+            <tr>
+                <td class="tdb">Name</td>
+                <td></td>
+            </tr>
+            {% for project in listprojectunlock %}
+                <tr>
+                    <td>{{ project.name }}</td>
+                    <td><a href={{ path('_lock',{'id':project.id}) }}>Lock</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <hr>
+        <table>
+            <tr>
+                <td class="tdb">Name</td>
+                <td></td>
+            </tr>
+            {% for project in listprojectlock %}
+                <tr>
+                    <td>{{ project.name }}</td>
+                    <td><a href={{ path('_unlock',{'id':project.id}) }}>Unlock</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

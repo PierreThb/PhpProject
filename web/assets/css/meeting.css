@@ -6,6 +6,11 @@
     padding-bottom: 14px;
 }
 
-#h2item{
+#h2item, #h2request, #h2att{
     margin-top: 0px;
 }
+
+#meeting, #details{
+    margin-left: 15px;
+}
+
