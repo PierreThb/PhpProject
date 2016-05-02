@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 29/04/2016
  * Time: 21:06
+ *
+ * This file contains the controller for MeetingMinutes's actions
  */
 
 namespace AppBundle\Controller;
@@ -27,6 +29,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * Class MeetingMinutesController
+ * @package AppBundle\Controller
+ */
 class MeetingMinutesController extends Controller
 {
 
@@ -257,6 +263,9 @@ class MeetingMinutesController extends Controller
     }
 
     /**
+     * Function which creates and add to the DataBase
+     * a Presence object for each member of the team
+     *
      * @param PersistentCollection $members
      * @param MeetingMinutes $minutes
      */
@@ -273,6 +282,9 @@ class MeetingMinutesController extends Controller
     }
 
     /**
+     * Function which creates and add to the DataBase a MinuteItems object
+     * for each item of the meeting
+     *
      * @param PersistentCollection $itemsAgenda
      */
     private function createMinuteItems(PersistentCollection $itemsAgenda)

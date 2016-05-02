@@ -22,11 +22,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * Class MeetingController
+ * @package AppBundle\Controller
+ */
 class MeetingController extends Controller
 {
     /**
-     * @Route("/meetingpage",name="_meeting")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      *
+     * @Route("/meetingpage",name="_meeting")
      */
     public function meetingPageAction(Request $request)
     {
@@ -52,9 +58,9 @@ class MeetingController extends Controller
     /**
      * @param Request $request
      * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/meetingpage/{id}",name="_meetingdetails")
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function meetingDetailsAction(Request $request, $id)
     {

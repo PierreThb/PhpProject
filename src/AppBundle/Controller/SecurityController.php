@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 15/03/2016
  * Time: 19:38
+ *
+ * This file contains the controller for security's actions
  */
 
 namespace AppBundle\Controller;
@@ -15,10 +17,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class SecurityController
+ * @package AppBundle\Controller
+ */
 class SecurityController extends Controller
 {
 
     /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @Route("/login",name="index")
      */
     public function loginAction(Request $request)

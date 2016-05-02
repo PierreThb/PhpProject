@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 27/04/2016
  * Time: 21:30
+ *
+ * This file contains the Controller for agenda's actions
  */
 
 namespace AppBundle\Controller;
@@ -22,6 +24,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * Class AgendaController
+ * @package AppBundle\Controller
+ */
 class AgendaController extends Controller
 {
     /**

@@ -4,10 +4,11 @@
  * User: Pierre
  * Date: 31/03/2016
  * Time: 21:03
+ *
+ * This file contains the Controller for the admin actions
  */
 
 namespace AppBundle\Controller;
-
 
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
@@ -17,13 +18,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class AdminController
+ * @package AppBundle\Controller
+ */
 class AdminController extends Controller
 {
+
     /**
      * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/adminpage/user", name="_adminuser")
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function adminUserPartAction(Request $request)
     {
@@ -36,11 +42,12 @@ class AdminController extends Controller
         ));
     }
 
+
     /**
      * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/adminpage/project", name="_adminproject")
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function adminProjectPartAction(Request $request)
     {

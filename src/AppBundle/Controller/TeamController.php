@@ -4,6 +4,8 @@
  * User: Pierre
  * Date: 12/04/2016
  * Time: 11:36
+ *
+ * This files contains the controller for team's actions
  */
 
 namespace AppBundle\Controller;
@@ -21,9 +23,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * Class TeamController
+ * @package AppBundle\Controller
+ */
 class TeamController extends Controller
 {
     /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @Route("/teampage",name="_team")
      */
     public function teamPageAction(Request $request)
