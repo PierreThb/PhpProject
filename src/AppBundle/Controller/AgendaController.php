@@ -30,6 +30,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class AgendaController extends Controller
 {
     /**
+     * Function to create a request to add a new item
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -84,6 +86,8 @@ class AgendaController extends Controller
     }
 
     /**
+     * Function to create a request to change an item
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -124,6 +128,8 @@ class AgendaController extends Controller
     }
 
     /**
+     * Function to create a request to re-order an item
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -180,12 +186,20 @@ class AgendaController extends Controller
         ));
     }
 
-    public function postponeItemRequestAction(Request $request,$id) //item id
+    /**
+     * Function to postpone an item
+     *
+     * @param Request $request
+     * @param $id
+     */
+    public function postponeItemRequestAction(Request $request, $id) //item id
     {
         // TODO : formulaire et tous
     }
 
     /**
+     * Function to agreed a request
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -300,6 +314,8 @@ class AgendaController extends Controller
     }
 
     /**
+     * Function to noted a request
+     * 
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response

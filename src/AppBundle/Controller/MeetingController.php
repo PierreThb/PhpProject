@@ -29,6 +29,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class MeetingController extends Controller
 {
     /**
+     * Function to see all meeting of the current user
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -56,6 +58,8 @@ class MeetingController extends Controller
     }
 
     /**
+     * Function to see details of a meeting
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -144,6 +148,8 @@ class MeetingController extends Controller
     }
 
     /**
+     * Function to set the attendance of a user to "yes"
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -174,6 +180,8 @@ class MeetingController extends Controller
     }
 
     /**
+     * Function to set the attendance of a user to "maybe"
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -199,6 +207,8 @@ class MeetingController extends Controller
     }
 
     /**
+     * Function to set the attendance of a user to "no"
+     * 
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response

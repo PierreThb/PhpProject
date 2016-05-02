@@ -18,6 +18,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface
 {
     /**
+     * Id of the User
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -27,6 +29,8 @@ class User implements UserInterface
     private $id;
 
     /**
+     * Name of the User
+     *
      * @var string
      *
      * @ORM\Column(name="userName", type="string", length=255)
@@ -34,6 +38,8 @@ class User implements UserInterface
     private $username;
 
     /**
+     * Password of the User
+     *
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
@@ -41,6 +47,8 @@ class User implements UserInterface
     private $password;
 
     /**
+     * Boolean to say of the user is admin or not
+     * 
      * @var bool
      *
      * @ORM\Column(name="isAdmin", type="boolean")
@@ -131,6 +139,8 @@ class User implements UserInterface
     }
 
     /**
+     * Function getSalt()
+     *
      * @return null
      */
     public function getSalt()
@@ -139,7 +149,7 @@ class User implements UserInterface
     }
 
     /**
-     *
+     * Function eraseCredentials()
      */
     public function eraseCredentials()
     {
@@ -147,6 +157,8 @@ class User implements UserInterface
     }
 
     /**
+     * Function getRoles()
+     * 
      * @return array
      */
     public function getRoles()

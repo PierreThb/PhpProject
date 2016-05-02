@@ -27,6 +27,8 @@ use Symfony\Component\Form\Extension\Core\Type\TimeType;
 class MeetType extends AbstractType
 {
     /**
+     * Function buildForm
+     *
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -59,6 +61,8 @@ class MeetType extends AbstractType
     }
 
     /**
+     * function setDefaultOptions
+     * 
      * @param OptionsResolver $resolver
      */
     public function setDefaultOption(OptionsResolver $resolver)

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Contains ItemRepository class
+ */
 namespace AppBundle\Repository;
 
 /**

@@ -38,6 +38,8 @@ class MeetingMinutesController extends Controller
 
 
     /**
+     * Function to publish a new MeetingMinutes
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -120,6 +122,8 @@ class MeetingMinutesController extends Controller
     }
 
     /**
+     * Function to see a MeetingMinute
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -158,6 +162,8 @@ class MeetingMinutesController extends Controller
     }
 
     /**
+     * Function to add a comment to a MeetingMinutes
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -194,6 +200,8 @@ class MeetingMinutesController extends Controller
     }
 
     /**
+     * Function to add a new action to an item
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -235,6 +243,8 @@ class MeetingMinutesController extends Controller
     }
 
     /**
+     * Function to see all action of an item
+     * 
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response

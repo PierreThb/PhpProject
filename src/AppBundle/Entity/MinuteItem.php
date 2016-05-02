@@ -27,6 +27,8 @@ use Doctrine\ORM\Mapping as ORM;
 class MinuteItem
 {
     /**
+     * Id of the MinuteItem
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -36,6 +38,8 @@ class MinuteItem
     private $id;
 
     /**
+     * Item related to MinuteItem
+     *
      * @var Item
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Item")
@@ -44,6 +48,8 @@ class MinuteItem
     private $item;
 
     /**
+     * MeetingMinute related to the MinuteItem
+     *
      * @var MeetingMinutes
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingMinutes",inversedBy="minuteItems")
@@ -52,6 +58,8 @@ class MinuteItem
     private $meetingMinute;
 
     /**
+     * Action for the MinuteItem
+     *
      * @var ItemAction
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\ItemAction",mappedBy="item")
@@ -59,13 +67,17 @@ class MinuteItem
     private $action;
 
     /**
+     * Boolean which say if the MinuteItem is postponed or not
+     *
      * @var boolean
      *
-     *  @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $postponed;
 
     /**
+     * Comment of the MinuteItem
+     * 
      * @var string
      *
      * @ORM\Column(type="text",nullable=true)

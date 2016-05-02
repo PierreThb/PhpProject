@@ -27,6 +27,8 @@ use Symfony\Component\Validator\Constraints\Time;
 class MeetingAttendance
 {
     /**
+     * Id of the MeetingAttendance
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -36,6 +38,8 @@ class MeetingAttendance
     private $id;
 
     /**
+     * Meeting related to the MeetingAttendance
+     *
      * @var Meeting
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting")
@@ -44,6 +48,8 @@ class MeetingAttendance
     private $meeting;
 
     /**
+     * User related to the MeetingAttendance
+     * 
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -64,6 +70,9 @@ class MeetingAttendance
      */
     private $answer;
 
+    /**
+     * MeetingAttendance constructor.
+     */
     public function __construct()
     {
         $this->answer = "notanswer";

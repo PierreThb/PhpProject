@@ -22,6 +22,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
+     * Function which render the user to the index
+     * 
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *

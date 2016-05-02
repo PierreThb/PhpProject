@@ -25,6 +25,8 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 class ChangePasswordType extends AbstractType
 {
     /**
+     * Function buildForm
+     *
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -42,6 +44,8 @@ class ChangePasswordType extends AbstractType
     }
 
     /**
+     * function setDefaultOptions
+     * 
      * @param OptionsResolver $resolver
      */
     public function setDefaultOptions(OptionsResolver $resolver)
@@ -52,6 +56,8 @@ class ChangePasswordType extends AbstractType
     }
 
     /**
+     * Function getName
+     *
      * @return string
      */
     public function getName()

@@ -25,6 +25,8 @@ use Doctrine\ORM\Mapping as ORM;
 class MeetingMinutes
 {
     /**
+     * Id of the MeetingMinutes
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -34,6 +36,8 @@ class MeetingMinutes
     private $id;
 
     /**
+     * Meeting related to the MeetingMinutes
+     *
      * @var Meeting
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting")
@@ -42,6 +46,8 @@ class MeetingMinutes
     private $meeting;
 
     /**
+     * Array containing all Presence for the MeetingMinutes
+     *
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Presence",mappedBy="meetingMinute")
@@ -49,6 +55,8 @@ class MeetingMinutes
     private $presences;
 
     /**
+     * Array containing all Comment for the MeetingMinutes
+     *
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\MinutesComment",mappedBy="meetingMinute")
@@ -56,6 +64,8 @@ class MeetingMinutes
     private $comments;
 
     /**
+     * Array containing all MinuteItem for the MeetingMinutes
+     * 
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\MinuteItem",mappedBy="meetingMinute")

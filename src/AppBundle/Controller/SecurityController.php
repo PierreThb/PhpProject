@@ -25,6 +25,8 @@ class SecurityController extends Controller
 {
 
     /**
+     * Function which manage the login
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -51,6 +53,8 @@ class SecurityController extends Controller
     }
 
     /**
+     * Function to change the password of a user
+     * 
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *

@@ -27,6 +27,8 @@ use AppBundle\Entity\MinuteItem;
 class ItemAction
 {
     /**
+     * if of the ItemAction
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -36,6 +38,8 @@ class ItemAction
     private $id;
 
     /**
+     * Item related to the ItemAction
+     *
      * @var MinuteItem
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MinuteItem",inversedBy="action")
@@ -57,12 +61,16 @@ class ItemAction
     private $state;
 
     /**
+     * Description of the ItemAction
+     *
      * @var string
      * @ORM\Column(type="string")
      */
     private $description;
 
     /**
+     * Implementer of the ItemAction
+     *
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -71,6 +79,8 @@ class ItemAction
     private $implementer;
 
     /**
+     * Deadline to accomplish the ItemAction
+     *
      * @var DateTime
      *
      * @ORM\Column(type="datetime")

@@ -26,6 +26,8 @@ use AppBundle\Entity\User;
 class Presence
 {
     /**
+     * Id of the Presence
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -35,6 +37,8 @@ class Presence
     private $id;
 
     /**
+     * User related to the Presence
+     *
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -59,6 +63,8 @@ class Presence
     private $type;
 
     /**
+     * MeetingMinute ralted to the Presence
+     * 
      * @var MeetingMinutes
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingMinutes",inversedBy="presences",cascade={"persist"})

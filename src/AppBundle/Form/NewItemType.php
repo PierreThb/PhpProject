@@ -22,6 +22,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class NewItemType extends AbstractType
 {
     /**
+     * Function buildForm
+     *
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -32,6 +34,8 @@ class NewItemType extends AbstractType
     }
 
     /**
+     * function setDefaultOptions
+     * 
      * @param OptionsResolver $resolver
      */
     public function setDefaultOption(OptionsResolver $resolver)

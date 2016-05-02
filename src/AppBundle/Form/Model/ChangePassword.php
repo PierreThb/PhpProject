@@ -18,6 +18,8 @@ use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 class ChangePassword
 {
     /**
+     * oldPassword
+     *
      * @SecurityAssert\UserPassword(
      *     message = "Wrong value for your current password"
      * )
@@ -25,7 +27,7 @@ class ChangePassword
     public $oldPassword;
 
     /**
-     * 
+     * newPassword
      */
     public $newPassword;
 }

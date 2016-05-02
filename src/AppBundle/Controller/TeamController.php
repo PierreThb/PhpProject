@@ -30,6 +30,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class TeamController extends Controller
 {
     /**
+     * Function to see all project of the current user
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -72,8 +74,12 @@ class TeamController extends Controller
         ));
     }
 
+
     /**
+     * Function to create a new Meeting for a project
+     *
      * @param Request $request
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("teampage/newmeeting/{id}",name="_newmeeting")

@@ -26,6 +26,8 @@ use Doctrine\ORM\Mapping as ORM;
 class UserRequest
 {
     /**
+     * Id of the UserRequest
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -35,6 +37,8 @@ class UserRequest
     private $id;
 
     /**
+     * Agenda related to the UserRequest
+     *
      * @var MeetingAgenda
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingAgenda")
@@ -44,6 +48,8 @@ class UserRequest
     private $agenda;
 
     /**
+     * User who did the UserRequest
+     *
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -53,6 +59,8 @@ class UserRequest
     private $user;
 
     /**
+     * Item related to the UserRequest
+     *
      * @var Item
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Item")
@@ -87,12 +95,17 @@ class UserRequest
     private $state;
 
     /**
+     * Content of the UserRequest
+     *
      * @var string
      *
      * @ORM\Column(type="string")
      */
     private $content;
 
+    /**
+     * UserRequest constructor.
+     */
     public function __construct()
     {
         $this->state = "pending";

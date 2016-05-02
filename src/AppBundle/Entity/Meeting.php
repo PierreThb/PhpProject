@@ -22,6 +22,8 @@ use Symfony\Component\Validator\Constraints\Time;
 class Meeting
 {
     /**
+     * id of the Meeting
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -31,6 +33,8 @@ class Meeting
     private $id;
 
     /**
+     * Duration of the Meeting
+     *
      * @var time
      *
      * @ORM\Column(name="duration",type="time")
@@ -38,6 +42,8 @@ class Meeting
     private $duration;
 
     /**
+     * Date of the Meeting
+     *
      * @var date
      *
      * @ORM\Column(name="date",type="datetime")
@@ -45,6 +51,8 @@ class Meeting
     private $date;
 
     /**
+     * Room for the Meeting
+     *
      * @var string
      *
      * @ORM\Column(name="room",type="string")
@@ -52,6 +60,8 @@ class Meeting
     private $room;
 
     /**
+     * Leader for the Meeting
+     *
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -59,6 +69,8 @@ class Meeting
     private $meetingLeader;
 
     /**
+     * Secretary for the Meeting
+     *
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -66,6 +78,8 @@ class Meeting
     private $meetingSecretary;
 
     /**
+     * Project related to the Meeting
+     *
      * @var Project
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project",inversedBy="meetings")
@@ -74,6 +88,8 @@ class Meeting
     private $project;
 
     /**
+     * Deadline for the Meeting
+     * 
      * @var date
      *
      * @ORM\Column(name="deadline",type="datetime")

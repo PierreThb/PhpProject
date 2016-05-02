@@ -24,6 +24,8 @@ use Doctrine\ORM\Mapping as ORM;
 class MeetingAgenda
 {
     /**
+     * Id for the MeetingAgenda
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -33,6 +35,8 @@ class MeetingAgenda
     private $id;
 
     /**
+     * Meeting related to the MeetingAgenda
+     *
      * @var Meeting
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Meeting")
@@ -41,6 +45,8 @@ class MeetingAgenda
     private $meeting;
 
     /**
+     * Array containing all the item of the MeetingAgenda
+     *
      * @var ArrayCollection
      *
      *@ORM\OneToMany(targetEntity="AppBundle\Entity\Item",mappedBy="agenda",cascade={"persist","remove"})

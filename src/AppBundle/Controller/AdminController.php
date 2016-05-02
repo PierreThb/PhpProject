@@ -26,6 +26,8 @@ class AdminController extends Controller
 {
 
     /**
+     * Function to see all users
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -44,6 +46,8 @@ class AdminController extends Controller
 
 
     /**
+     * Function to see all projects
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -68,6 +72,8 @@ class AdminController extends Controller
     }
 
     /**
+     * Function to create a new User
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -105,6 +111,8 @@ class AdminController extends Controller
     }
 
     /**
+     * Function to create a new Project
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -148,6 +156,8 @@ class AdminController extends Controller
     }
 
     /**
+     * Function to lock a project
+     *
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -167,6 +177,8 @@ class AdminController extends Controller
     }
 
     /**
+     * Function to unlock a project
+     * 
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      *

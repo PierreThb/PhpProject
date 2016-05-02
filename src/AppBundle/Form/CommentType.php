@@ -22,6 +22,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class CommentType extends AbstractType
 {
     /**
+     * Function buildForm
+     * 
      * @param FormBuilderInterface $builder
      * @param array $options
      */

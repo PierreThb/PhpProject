@@ -24,6 +24,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class UserType extends AbstractType
 {
     /**
+     * Function buildForm
+     *
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -34,6 +36,8 @@ class UserType extends AbstractType
     }
 
     /**
+     * function setDefaultOptions
+     * 
      * @param OptionsResolver $resolver
      */
     public function setDefaultOption(OptionsResolver $resolver){

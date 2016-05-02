@@ -20,6 +20,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Project
 {
     /**
+     * Id of the Project
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -29,35 +31,50 @@ class Project
     private $id;
 
     /**
+     * Nmae of the Project
+     *
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
+     * Leader of the Project
+     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
     private $leader;
 
     /**
+     * Secretary of the Project
+     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
     private $secretary;
 
     /**
+     * Boolean to say if the Project is locked or not
+     *
      * @ORM\Column(type="boolean")
      */
     private $islocked;
 
     /**
+     * User who belongs to the Project
+     *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
      */
     private $users;
 
     /**
+     * Meeting who belongs to the Project
+     * 
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Meeting",mappedBy="project")
      */
     private $meetings;
 
+    /**
+     * Project constructor.
+     */
     public function __construct()
     {
         $this->users = new ArrayCollection();

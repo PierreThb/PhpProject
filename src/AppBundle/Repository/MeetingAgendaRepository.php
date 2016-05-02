@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Contains MeetingAgendaRepository class
+ */
 namespace AppBundle\Repository;
 
 /**

@@ -25,6 +25,8 @@ use AppBundle\Entity\User;
 class MinutesComment
 {
     /**
+     * Id of the MinutesComment
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -34,6 +36,8 @@ class MinutesComment
     private $id;
 
     /**
+     * User who add the MinutesComment
+     *
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -42,6 +46,8 @@ class MinutesComment
     private $user;
 
     /**
+     * MeetingMinute related to the MinutesComment
+     *
      * @var MeetingMinutes
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingMinutes",inversedBy="comments")
@@ -50,6 +56,8 @@ class MinutesComment
     private $meetingMinute;
 
     /**
+     * Content of the MinutesComment
+     *
      * @var string
      *
      * @ORM\Column(type="text")
@@ -58,6 +66,7 @@ class MinutesComment
 
     /**
      * MinutesComment constructor.
+     * 
      * @param \AppBundle\Entity\MeetingMinutes|null $minute
      * @param \AppBundle\Entity\User|null $user
      */

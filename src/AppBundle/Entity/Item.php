@@ -22,6 +22,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Item
 {
     /**
+     * id of the item
+     *
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -31,6 +33,8 @@ class Item
     private $id;
 
     /**
+     * name of the item
+     *
      * @var string
      *
      * @ORM\Column(type="string")
@@ -38,6 +42,8 @@ class Item
     private $name;
 
     /**
+     * agenda of the item
+     *
      * @var MeetingAgenda
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingAgenda",inversedBy="items")
@@ -46,6 +52,8 @@ class Item
     private $agenda;
 
     /**
+     * user who proposed the item
+     *
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
@@ -54,6 +62,8 @@ class Item
     private $proposer;
 
     /**
+     * number of the item in the agenda
+     *
      * @var int
      *
      * @ORM\Column(type="integer")
