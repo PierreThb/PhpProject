@@ -1,0 +1,15 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <p>team page</p>
+    <hr>
+    <p>Unlocked project</p>
+    {% for project in listprojectunlock %}
+        <li>name : {{ project.name  }}, leader : {{ project.leader.username }}, secretary : {{ project.secretary.username }}, <a href={{ path('_newmeeting',{'id':project.id}) }}>Add meeting</a></li>
+    {% endfor %}
+    <hr>
+    <p>Locked project</p>
+    {% for project in listprojectlock %}
+        <li>name : {{ project.name  }}, leader : {{ project.leader.username }}, secretary : {{ project.secretary.username }}, locked : {{ project.islocked }}</li>
+    {% endfor %}
+{% endblock %}

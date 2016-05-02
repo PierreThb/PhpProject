@@ -1,0 +1,6 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <p>Request send, meeting chair will consider it.</p>
+    <button><a href={{ path('_meetingdetails',{'id':meeting.id}) }}>Ok</a></button>
+{% endblock %}
