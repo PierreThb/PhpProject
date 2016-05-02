@@ -1,7 +1,0 @@
-Images:
-
-welcomepage.jpg : https://www.google.ie/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwj0mZbKiOzLAhVG7w4KHcduB7MQjRwIBw&url=https%3A%2F%2Fwww.nama.ie%2Fabout-us%2Fmanagement-team%2F&psig=AFQjCNFipGM6GuYeU1uHou87lqpArd85gg&ust=1459551465225975
-draw_band.jpg : https://www.google.ie/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwipk6D5iOzLAhVH7Q4KHVHyAiwQjRwIBw&url=http%3A%2F%2Fwww.bradegeland.com%2Fblog%2Ftips-for-successful-virtual-team-management&psig=AFQjCNFipGM6GuYeU1uHou87lqpArd85gg&ust=1459551465225975
-
-All icons come from this webiste:
-<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
