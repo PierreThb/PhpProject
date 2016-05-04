@@ -55,7 +55,7 @@ class MinuteItem
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MeetingMinutes",inversedBy="minuteItems")
      * @ORM\JoinColumn(name="meeting_minute_id",referencedColumnName="id")
      */
-    private $meetingMinute;
+    //private $meetingMinute;
 
     /**
      * Action for the MinuteItem

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: May 02, 2016 at 08:30 AM
+-- Generation Time: May 04, 2016 at 08:52 AM
 -- Server version: 10.1.9-MariaDB-log
 -- PHP Version: 5.6.16
 
@@ -34,6 +34,28 @@ CREATE TABLE `item` (
   `number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`id`, `agenda_id`, `proposer_id`, `name`, `number`) VALUES
+(1, 1, 15, 'apologies received', 1),
+(2, 1, 15, 'agree agenda', 2),
+(3, 1, 15, 'accept minutes of previous meeting', 3),
+(4, 2, 15, 'apologies received', 1),
+(5, 2, 15, 'agree agenda', 2),
+(6, 2, 15, 'accept minutes of previous meeting', 3),
+(7, 2, 15, 'A new item', 4),
+(8, 2, 15, 'a second new item', 5),
+(9, 2, 15, 'item item item', 6),
+(10, 3, 15, 'apologies received', 1),
+(11, 3, 15, 'agree agenda', 2),
+(12, 3, 15, 'accept minutes of previous meeting', 3),
+(13, 1, 15, 'A new item', 4),
+(14, 4, 15, 'apologies received', 1),
+(15, 4, 15, 'agree agenda', 2),
+(16, 4, 15, 'accept minutes of previous meeting', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +70,13 @@ CREATE TABLE `item_action` (
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `deadline` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `item_action`
+--
+
+INSERT INTO `item_action` (`id`, `item_id`, `implementer_id`, `state`, `description`, `deadline`) VALUES
+(1, NULL, 15, 'in_progress', 'a new action', '2016-05-04 04:43:00');
 
 -- --------------------------------------------------------
 
@@ -66,6 +95,16 @@ CREATE TABLE `meeting` (
   `deadline` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `meeting`
+--
+
+INSERT INTO `meeting` (`id`, `meeting_leader_id`, `meeting_secretary_id`, `duration`, `date`, `room`, `ProjectMeetings`, `deadline`) VALUES
+(1, 15, 13, '01:00:00', '2016-05-08 03:19:00', 'e202', 3, '2016-05-04 03:19:00'),
+(2, 14, 15, '01:00:00', '2016-05-04 03:20:00', 'e202', 3, '2016-05-03 11:30:00'),
+(3, 13, 15, '01:00:00', '2016-05-06 03:32:00', 'a312', 3, '2016-05-02 03:32:00'),
+(4, 14, 16, '01:00:00', '2016-05-05 04:48:00', 'b102', 3, '2016-05-04 04:48:00');
+
 -- --------------------------------------------------------
 
 --
@@ -76,6 +115,16 @@ CREATE TABLE `meetingagenda` (
   `id` int(11) NOT NULL,
   `meeting_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `meetingagenda`
+--
+
+INSERT INTO `meetingagenda` (`id`, `meeting_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -90,6 +139,36 @@ CREATE TABLE `meetingattendance` (
   `userId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `meetingattendance`
+--
+
+INSERT INTO `meetingattendance` (`id`, `userAnswer`, `meetingId`, `userId`) VALUES
+(1, 'notanswer', 1, 12),
+(2, 'notanswer', 1, 13),
+(3, 'notanswer', 1, 14),
+(4, 'yes', 1, 15),
+(5, 'notanswer', 1, 16),
+(6, 'notanswer', 1, 17),
+(7, 'notanswer', 2, 12),
+(8, 'notanswer', 2, 13),
+(9, 'notanswer', 2, 14),
+(10, 'yes', 2, 15),
+(11, 'notanswer', 2, 16),
+(12, 'notanswer', 2, 17),
+(13, 'notanswer', 3, 12),
+(14, 'notanswer', 3, 13),
+(15, 'notanswer', 3, 14),
+(16, 'yes', 3, 15),
+(17, 'notanswer', 3, 16),
+(18, 'notanswer', 3, 17),
+(19, 'notanswer', 4, 12),
+(20, 'notanswer', 4, 13),
+(21, 'notanswer', 4, 14),
+(22, 'notanswer', 4, 15),
+(23, 'notanswer', 4, 16),
+(24, 'notanswer', 4, 17);
+
 -- --------------------------------------------------------
 
 --
@@ -100,6 +179,13 @@ CREATE TABLE `meeting_minutes` (
   `id` int(11) NOT NULL,
   `meeting_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `meeting_minutes`
+--
+
+INSERT INTO `meeting_minutes` (`id`, `meeting_id`) VALUES
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -113,6 +199,14 @@ CREATE TABLE `minutes_comment` (
   `meeting_minute_id` int(11) DEFAULT NULL,
   `content` longtext COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `minutes_comment`
+--
+
+INSERT INTO `minutes_comment` (`id`, `user_id`, `meeting_minute_id`, `content`) VALUES
+(1, 15, 1, 'a new comment'),
+(2, 15, 1, 'a new commet 2');
 
 -- --------------------------------------------------------
 
@@ -140,6 +234,18 @@ CREATE TABLE `presence` (
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `presence`
+--
+
+INSERT INTO `presence` (`id`, `user_id`, `meeting_id`, `type`) VALUES
+(1, 12, 1, 'absent_no_apologies'),
+(2, 13, 1, 'absent_no_apologies'),
+(3, 14, 1, 'absent_no_apologies'),
+(4, 15, 1, 'absent_no_apologies'),
+(5, 16, 1, 'absent_no_apologies'),
+(6, 17, 1, 'absent_no_apologies');
+
 -- --------------------------------------------------------
 
 --
@@ -154,6 +260,17 @@ CREATE TABLE `project` (
   `islocked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`id`, `leader_id`, `secretary_id`, `name`, `islocked`) VALUES
+(1, 15, 13, 'Maths', 1),
+(2, 15, 14, 'Pho', 1),
+(3, 15, 16, 'Php', 0),
+(4, 13, 15, 'C++', 0),
+(5, 18, 15, 'Java', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -164,6 +281,40 @@ CREATE TABLE `project_user` (
   `project_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `project_user`
+--
+
+INSERT INTO `project_user` (`project_id`, `user_id`) VALUES
+(1, 12),
+(1, 13),
+(1, 14),
+(1, 15),
+(1, 16),
+(1, 17),
+(2, 12),
+(2, 13),
+(2, 14),
+(2, 15),
+(2, 16),
+(2, 17),
+(3, 12),
+(3, 13),
+(3, 14),
+(3, 15),
+(3, 16),
+(3, 17),
+(4, 12),
+(4, 13),
+(4, 14),
+(4, 15),
+(4, 16),
+(4, 17),
+(5, 12),
+(5, 13),
+(5, 15),
+(5, 18);
 
 -- --------------------------------------------------------
 
@@ -183,7 +334,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `userName`, `password`, `isAdmin`) VALUES
-(12, 'admin', '$2y$13$SzLf3eRRql4Uf6orBZwg2ukm5kphWa78QP0qmlddSH6HLHUfYpCJq', 1);
+(12, 'admin', '$2y$13$SzLf3eRRql4Uf6orBZwg2ukm5kphWa78QP0qmlddSH6HLHUfYpCJq', 1),
+(13, 'Paul', '$2y$13$xGUiVilX/AycBnIVMkzt/.PMNO1dd0BfsYTAtrDmYuAarzgiRjaze', 0),
+(14, 'Henry', '$2y$13$SwX06.LL0SHua2bGSCcWXeHcxDoAqsmK4MZxbY0v11/GU0yuQaZmO', 0),
+(15, 'Pierre', '$2y$13$fGFLgmJic2A0BgVqVQJYPOeiuFn4wCjNMHHIwx3KkUXv0sLUb8c0y', 0),
+(16, 'Mark', '$2y$13$Xhs9LzWDptS42cZ9aV/UkeZxnQrtUD7uISRIPn1a6MGBQZniez9EG', 0),
+(17, 'Jean', '$2y$13$L6yu0rbp0cjxgVk91DexWOnc8G3nt.A8h1e65CG.JGXPdGXzlsM0y', 0),
+(18, 'Matt', '$2y$13$kz7VmGeZteM5jZX9ZebjIeiBdRKYX7rdL4Aifjs2l9jpfHgmZcsbK', 0);
 
 -- --------------------------------------------------------
 
@@ -200,6 +357,18 @@ CREATE TABLE `userrequest` (
   `state` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `userrequest`
+--
+
+INSERT INTO `userrequest` (`id`, `agenda_id`, `user_id`, `item_id`, `type`, `state`, `content`) VALUES
+(1, 2, 15, NULL, 'additional', 'agreed', 'A new item'),
+(2, 2, 15, NULL, 'additional', 'agreed', 'a second new item'),
+(3, 2, 15, NULL, 'additional', 'agreed', 'item item item'),
+(4, 1, 15, NULL, 'additional', 'agreed', 'A new item'),
+(5, 1, 15, NULL, 'additional', 'pending', 'eezeze'),
+(6, 1, 15, NULL, 'additional', 'pending', 'a item');
 
 --
 -- Indexes for dumped tables
@@ -324,22 +493,22 @@ ALTER TABLE `item_action`
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `meetingagenda`
 --
 ALTER TABLE `meetingagenda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `meetingattendance`
 --
 ALTER TABLE `meetingattendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `meeting_minutes`
 --
 ALTER TABLE `meeting_minutes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `minutes_comment`
 --
@@ -349,27 +518,27 @@ ALTER TABLE `minutes_comment`
 -- AUTO_INCREMENT for table `minute_item`
 --
 ALTER TABLE `minute_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `presence`
 --
 ALTER TABLE `presence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `userrequest`
 --
 ALTER TABLE `userrequest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
